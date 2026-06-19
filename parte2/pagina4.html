@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iteração, Testes e Anti-padrões | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .ip-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.7rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .ip-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .ip-card.full {
+      grid-column: 1 / -1;
+    }
+
+    .ip-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--texto-principal);
+    }
+
+    .ip-card p, .ip-card li {
+      font-size: 0.8rem;
+      color: var(--texto-secundario);
+      line-height: 1.45;
+    }
+
+    .ip-card ul {
+      list-style: none;
+      margin-top: 0.4rem;
+    }
+
+    .ip-card li {
+      margin-bottom: 0.35rem;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .ip-card.bom li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--verde-ocean);
+      font-weight: 800;
+    }
+
+    .ip-card.ruim li::before {
+      content: "✗";
+      position: absolute;
+      left: 0;
+      color: #EF4444;
+      font-weight: 800;
+    }
+
+    .ciclo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.6rem;
+    }
+
+    .ciclo-step {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--texto-principal);
+    }
+
+    .ciclo-arrow {
+      color: var(--azul-claro);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 800px) {
+      .ip-grid {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 1rem;">
+        <h2>Iteração, Testes e Anti-padrões</h2>
+        <p>Como refinar prompts e evitar erros comuns</p>
+      </div>
+
+      <div class="ip-grid">
+        <div class="ip-card full">
+          <h3>🔄 Ciclo de iteração</h3>
+          <div class="ciclo">
+            <div class="ciclo-step">Escreva o prompt</div>
+            <span class="ciclo-arrow">→</span>
+            <div class="ciclo-step">Teste com dados reais</div>
+            <span class="ciclo-arrow">→</span>
+            <div class="ciclo-step">Compare com o esperado</div>
+            <span class="ciclo-arrow">→</span>
+            <div class="ciclo-step">Ajuste uma variável</div>
+            <span class="ciclo-arrow">→</span>
+            <div class="ciclo-step">Repita</div>
+          </div>
+        </div>
+
+        <div class="ip-card bom">
+          <h3>✅ Boas práticas</h3>
+          <ul>
+            <li>Teste com múltiplos exemplos reais</li>
+            <li>Altere apenas uma coisa por vez</li>
+            <li>Use prompts negativos (o que NÃO fazer)</li>
+            <li>Peça ao modelo para avaliar a própria resposta</li>
+            <li>Documente prompts que funcionam</li>
+          </ul>
+        </div>
+
+        <div class="ip-card ruim">
+          <h3>❌ Anti-padrões</h3>
+          <ul>
+            <li>Prompts muito genéricos ou ambíguos</li>
+            <li>Supor que o modelo "sabe" o contexto</li>
+            <li>Misturar muitas instruções em um único prompt</li>
+            <li>Não verificar se a saída segue o formato pedido</li>
+            <li>Confiar cegamente em respostas sem fontes</li>
+          </ul>
+        </div>
+
+        <div class="ip-card full">
+          <h3>📊 Como avaliar um prompt</h3>
+          <p>Defina critérios claros antes de testar: precisão, formato, tom, tamanho, criatividade e custo. Avalie várias execuções e calcule a taxa de acerto. Um bom prompt é aquevel que funciona de forma consistente, não apenas uma vez.</p>
+        </div>
+      </div>
+
+      <div class="numero-slide">4 / 9</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina3.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina5.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

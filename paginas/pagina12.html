@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hallucination | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .hallucination-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .hallucination-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .hallucination-card.destaque {
+      grid-column: 1 / -1;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.12) 0%, rgba(245, 158, 11, 0.08) 100%);
+      border-color: rgba(239, 68, 68, 0.25);
+    }
+
+    .hallucination-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--texto-principal);
+    }
+
+    .hallucination-card p {
+      font-size: 0.8rem;
+      color: var(--texto-secundario);
+      line-height: 1.45;
+    }
+
+    .chat-exemplo {
+      margin-top: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .msg {
+      max-width: 90%;
+      padding: 0.6rem 0.85rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      line-height: 1.4;
+    }
+
+    .msg.user {
+      align-self: flex-start;
+      background: rgba(52, 184, 245, 0.15);
+      border: 1px solid rgba(52, 184, 245, 0.2);
+      color: var(--texto-principal);
+      border-bottom-left-radius: 4px;
+    }
+
+    .msg.bot {
+      align-self: flex-end;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      color: var(--texto-principal);
+      border-bottom-right-radius: 4px;
+    }
+
+    .msg.bot .aviso {
+      display: block;
+      margin-top: 0.4rem;
+      font-size: 0.65rem;
+      color: #EF4444;
+      font-weight: 700;
+    }
+
+    .mitigacao-lista {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .mitigacao-lista li {
+      font-size: 0.78rem;
+      color: var(--texto-secundario);
+      margin-bottom: 0.4rem;
+      padding-left: 1.2rem;
+      position: relative;
+      line-height: 1.4;
+    }
+
+    .mitigacao-lista li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--verde-ocean);
+      font-weight: 800;
+    }
+
+    @media (max-width: 850px) {
+      .hallucination-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 1rem;">
+        <h2>Hallucination em LLMs</h2>
+        <p>Quando o modelo inventa informações com aparência de verdade</p>
+      </div>
+
+      <div class="hallucination-grid">
+        <div class="hallucination-card destaque">
+          <h3>🎭 O que é Hallucination?</h3>
+          <p>
+            Hallucination é quando uma LLM gera conteúdo que parece plausível e confiante, mas é <strong>falso, inventado ou incorreto</strong>. O modelo não está "mentindo" de propósito — ele está simplesmente prevendo tokens que soam coerentes, sem garantia factual.
+          </p>
+        </div>
+
+        <div class="hallucination-card">
+          <h3>📚 Exemplo: Citação Falsa</h3>
+          <div class="chat-exemplo">
+            <div class="msg user">Cite um estudo de 2023 sobre IA na medicina.</div>
+            <div class="msg bot">
+              "De acordo com o estudo de Silva et al. (2023), publicado no Journal of Medical AI, o uso de LLMs reduziu erros de diagnóstico em 34%."
+              <span class="aviso">⚠️ Este estudo pode não existir.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hallucination-card">
+          <h3>🔢 Exemplo: Dado Inventado</h3>
+          <div class="chat-exemplo">
+            <div class="msg user">Qual a população de Curitiba em 2025?</div>
+            <div class="msg bot">
+              "A população de Curitiba em 2025 é de 2.145.890 habitantes."
+              <span class="aviso">⚠️ Número provavelmente inventado.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hallucination-card">
+          <h3>⚠️ Por que Acontece?</h3>
+          <p>
+            As LLMs são treinadas para gerar sequências prováveis de tokens, não para verificar fatos. Elas combinam padrões aprendidos e podem produzir respostas coerentes semanticamente, mas sem base na realidade.
+          </p>
+        </div>
+
+        <div class="hallucination-card" style="grid-column: 1 / -1; text-align: center; background: rgba(0, 196, 140, 0.06); border-color: rgba(0, 196, 140, 0.25);">
+          <h3>➡️ Como Reduzir Hallucination?</h3>
+          <p>As próximas duas páginas apresentam estratégias práticas para mitigar esse problema, desde técnicas de engenharia de prompt até processos de validação humana.</p>
+        </div>
+      </div>
+
+      <div class="numero-slide">12 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina11.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina13.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

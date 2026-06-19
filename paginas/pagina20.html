@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Riscos do Prompt Injection | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .riscos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.7rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .risco-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 0.85rem;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .risco-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(239, 68, 68, 0.4);
+    }
+
+    .risco-card .icone {
+      font-size: 1.4rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .risco-card h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      color: var(--texto-principal);
+    }
+
+    .risco-card p {
+      font-size: 0.75rem;
+      color: var(--texto-secundario);
+      line-height: 1.4;
+    }
+
+    .risco-card.destaque {
+      grid-column: 1 / -1;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.12) 0%, rgba(245, 158, 11, 0.08) 100%);
+      border-color: rgba(239, 68, 68, 0.25);
+    }
+
+    .risco-card.destaque h3 {
+      font-size: 1.1rem;
+    }
+
+    .risco-card.destaque p {
+      font-size: 0.85rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 900px) {
+      .riscos-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .riscos-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 1rem;">
+        <h2>Riscos em Produção</h2>
+        <p>O que pode acontecer se sua aplicação sofrer prompt injection</p>
+      </div>
+
+      <div class="riscos-grid">
+        <div class="risco-card destaque">
+          <div class="icone">🚨</div>
+          <h3>Impacto Real no Negócio</h3>
+          <p>Em produção, um ataque bem-sucedido pode causar perdas financeiras, vazamento de dados, decisões erradas e danos à reputação da empresa.</p>
+        </div>
+
+        <div class="risco-card">
+          <div class="icone">🔓</div>
+          <h3>Vazamento de Dados</h3>
+          <p>Atacantes podem extrair prompts de sistema, dados de treinamento, informações de outros usuários ou segredos da aplicação.</p>
+        </div>
+
+        <div class="risco-card">
+          <div class="icone">💸</div>
+          <h3>Ações Não Autorizadas</h3>
+          <p>Agentes podem executar operações indesejadas: enviar e-mails, fazer transferências, excluir registros ou alterar configurações.</p>
+        </div>
+
+        <div class="risco-card">
+          <div class="icone">🎭</div>
+          <h3>Manipulação de Respostas</h3>
+          <p>O modelo pode ser forçado a gerar conteúdo falso, ofensivo, enganoso ou que viole políticas da empresa.</p>
+        </div>
+
+        <div class="risco-card">
+          <div class="icone">📉</div>
+          <h3>Perda de Confiança</h3>
+          <p>Um incidente exposto pode prejudicar a confiança de clientes, parceiros e usuários no produto e na marca.</p>
+        </div>
+
+        <div class="risco-card">
+          <div class="icone">⚖️</div>
+          <h3>Problemas Legais</h3>
+          <p>Respostas manipuladas ou vazamento de dados sensíveis podem gerar responsabilidades legais e multas regulatórias.</p>
+        </div>
+
+        <div class="risco-card">
+          <div class="icone">🌐</div>
+          <h3>Escalada em Cadeia</h3>
+          <p>Se o agente tiver acesso a múltiplos sistemas, um único ataque pode se propagar para outras APIs e bancos de dados.</p>
+        </div>
+      </div>
+
+      <div class="numero-slide">20 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina19.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina21.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

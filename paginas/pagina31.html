@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tipos de Fine-tuning — Parte 2 | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .tipos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.55rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .tipo-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.7rem;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .tipo-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0, 196, 140, 0.4);
+    }
+
+    .tipo-card .icone {
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .tipo-card h3 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: var(--texto-principal);
+      line-height: 1.2;
+    }
+
+    .tipo-card p {
+      font-size: 0.7rem;
+      color: var(--texto-secundario);
+      line-height: 1.35;
+      margin-bottom: 0.35rem;
+    }
+
+    .tipo-card .tag {
+      display: inline-block;
+      padding: 0.1rem 0.4rem;
+      border-radius: 9999px;
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+
+    .tag.dominio { background: rgba(123, 97, 255, 0.15); color: #7B61FF; }
+    .tag.alinhamento { background: rgba(245, 158, 11, 0.15); color: #F59E0B; }
+
+    @media (max-width: 900px) {
+      .tipos-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .tipos-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 0.75rem;">
+        <h2>Tipos de Fine-tuning — Parte 2</h2>
+        <p>Domain Adaptation, RLHF e DPO</p>
+      </div>
+
+      <div class="tipos-grid">
+        <div class="tipo-card">
+          <div class="icone">🏛️</div>
+          <span class="tag dominio">Domínio</span>
+          <h3>Domain Adaptation</h3>
+          <p>Treina o modelo em textos de um domínio específico. Útil para jargões técnicos e vocabulários especializados.</p>
+        </div>
+
+        <div class="tipo-card">
+          <div class="icone">👥</div>
+          <span class="tag alinhamento">Alinhamento</span>
+          <h3>RLHF</h3>
+          <p>Reinforcement Learning from Human Feedback. Alinha o modelo a preferências humanas através de recompensas.</p>
+        </div>
+
+        <div class="tipo-card">
+          <div class="icone">⚖️</div>
+          <span class="tag alinhamento">Alinhamento</span>
+          <h3>DPO</h3>
+          <p>Direct Preference Optimization. Simplifica o RLHF otimizando diretamente a partir de pares preferidos.</p>
+        </div>
+
+        <div class="tipo-card" style="grid-column: 1 / -1; text-align: center;">
+          <div class="icone">📊</div>
+          <h3>Quando usar cada um?</h3>
+          <p><strong>Domain Adaptation</strong> para vocabulário técnico. <strong>RLHF/DPO</strong> para produtos finais que precisam de respostas alinhadas a preferências humanas e segurança.</p>
+        </div>
+      </div>
+
+      <div class="numero-slide">31 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina30.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina32.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

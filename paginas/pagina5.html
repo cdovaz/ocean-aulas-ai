@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chatbot Tradicional | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <script src="https://unpkg.com/cytoscape@3.26.0/dist/cytoscape.min.js"></script>
+  <script src="../assets/js/grafos.js" defer></script>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 1.5rem;">
+        <h2>Arquitetura de um Chatbot Tradicional</h2>
+        <p>Fluxo baseado em NLU, intenções, entidades e respostas pré-definidas</p>
+      </div>
+      <div class="grafo-wrapper">
+        <div id="cy-chatbot">
+          <div class="cy-tooltip" id="cy-chatbot-tooltip">
+            <h4 id="tooltip-titulo"></h4>
+            <span class="tipo" id="tooltip-tipo"></span>
+            <p id="tooltip-descricao"></p>
+          </div>
+        </div>
+        <div class="grafo-sidebar">
+          <div class="painel-info" id="node-info-chatbot">
+            <h3 id="info-titulo-chatbot">Explore o grafo</h3>
+            <span class="tipo-tag" id="info-tipo-chatbot" style="display: none;"></span>
+            <p id="info-descricao-chatbot" class="placeholder">Clique em um nó para ver detalhes sobre o componente.</p>
+          </div>
+          <div class="legenda">
+            <h4>Legenda</h4>
+            <div class="legenda-item"><div class="legenda-cor" style="background: #34B8F5;"></div>Entrada / Saída</div>
+            <div class="legenda-item"><div class="legenda-cor" style="background: #7B61FF;"></div>NLU / Raciocínio</div>
+            <div class="legenda-item"><div class="legenda-cor" style="background: #00C48C;"></div>Memória / Contexto</div>
+            <div class="legenda-item"><div class="legenda-cor" style="background: #F59E0B;"></div>Ação / Execução</div>
+            <div class="legenda-item"><div class="legenda-cor" style="background: #EF4444;"></div>Segurança / Validação</div>
+            <div class="legenda-item"><div class="legenda-cor" style="background: #64748B;"></div>Monitoramento / Controle</div>
+          </div>
+        </div>
+      </div>
+      <div class="numero-slide">5 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina4.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina6.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

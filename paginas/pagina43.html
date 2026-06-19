@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Técnicas Avançadas e Avaliação | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .adv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.55rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .adv-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.65rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .adv-card.full {
+      grid-column: 1 / -1;
+    }
+
+    .adv-card h3 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      color: var(--texto-principal);
+    }
+
+    .adv-card p, .adv-card li {
+      font-size: 0.65rem;
+      color: var(--texto-secundario);
+      line-height: 1.4;
+    }
+
+    .adv-card table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.58rem;
+    }
+
+    .adv-card th, .adv-card td {
+      padding: 0.25rem 0.35rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      color: var(--texto-secundario);
+    }
+
+    .adv-card th {
+      color: var(--texto-principal);
+      font-weight: 700;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .adv-card ul {
+      list-style: none;
+    }
+
+    .adv-card li {
+      margin-bottom: 0.15rem;
+      padding-left: 0.9rem;
+      position: relative;
+    }
+
+    .adv-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--verde-ocean);
+      font-weight: 800;
+    }
+
+    .arq-prod {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+      margin-top: 0.35rem;
+    }
+
+    .arq-step {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      padding: 0.3rem 0.5rem;
+      font-size: 0.6rem;
+      color: var(--texto-principal);
+      text-align: center;
+    }
+
+    .arq-arrow {
+      color: var(--verde-ocean);
+      font-size: 0.8rem;
+    }
+
+    .resumo-final {
+      background: linear-gradient(135deg, rgba(0, 196, 140, 0.1) 0%, rgba(20, 40, 160, 0.1) 100%);
+      border-color: rgba(0, 196, 140, 0.2);
+      text-align: center;
+    }
+
+    .resumo-final p {
+      color: var(--texto-principal);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 800px) {
+      .adv-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 0.55rem;">
+        <h2>Técnicas Avançadas e Avaliação</h2>
+        <p>Otimizando e medindo um sistema RAG em produção</p>
+      </div>
+
+      <div class="adv-grid">
+        <div class="adv-card">
+          <h3>🔬 Técnicas Avançadas</h3>
+          <table>
+            <thead>
+              <tr><th>Técnica</th><th>Benefício</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>HyDE</td><td>Gera resposta hipotética para buscar</td></tr>
+              <tr><td>Re-ranking</td><td>Segunda passada mais precisa</td></tr>
+              <tr><td>Busca híbrida</td><td>Vetorial + BM25</td></tr>
+              <tr><td>Query expansion</td><td>Expande com sinônimos/contexto</td></tr>
+              <tr><td>Metadata filtering</td><td>Filtra por data, autor, categoria</td></tr>
+              <tr><td>Multi-query</td><td>Várias variações da pergunta</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="adv-card">
+          <h3>📊 Métricas</h3>
+          <ul>
+            <li><strong>Recall@k:</strong> resposta está no top-k?</li>
+            <li><strong>Precision@k:</strong> quantos do top-k são relevantes?</li>
+            <li><strong>MRR:</strong> posição do primeiro relevante</li>
+            <li><strong>Faithfulness:</strong> resposta é fiel ao contexto?</li>
+            <li><strong>Answer relevance:</strong> responde à pergunta?</li>
+            <li><strong>Context relevance:</strong> contexto recuperado é relevante?</li>
+          </ul>
+          <p style="margin-top: 0.25rem;">Ferramentas: <strong>RAGAS</strong>, <strong>LangSmith</strong>, avaliação humana.</p>
+        </div>
+
+        <div class="adv-card">
+          <h3>⚠️ Problemas Comuns</h3>
+          <table>
+            <thead>
+              <tr><th>Problema</th><th>Solução</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Respostas genéricas</td><td>Melhorar chunking, re-ranking</td></tr>
+              <tr><td>Alucinações</td><td>Temperature=0, citações obrigatórias</td></tr>
+              <tr><td>Não encontra resposta</td><td>Testar embeddings, aumentar overlap</td></tr>
+              <tr><td>Contexto muito longo</td><td>Reduzir k, resumir chunks</td></tr>
+              <tr><td>Informação fragmentada</td><td>Chunking semântico, overlap maior</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="adv-card">
+          <h3>🏗️ Arquitetura de Produção</h3>
+          <div class="arq-prod">
+            <div class="arq-step">Fontes de docs</div>
+            <span class="arq-arrow">→</span>
+            <div class="arq-step">ETL / Pipeline</div>
+            <span class="arq-arrow">→</span>
+            <div class="arq-step">Qdrant</div>
+            <span class="arq-arrow">→</span>
+            <div class="arq-step">FastAPI + LangGraph</div>
+            <span class="arq-arrow">→</span>
+            <div class="arq-step">Gemini</div>
+            <span class="arq-arrow">→</span>
+            <div class="arq-step">Resposta</div>
+          </div>
+        </div>
+
+        <div class="adv-card full resumo-final">
+          <h3>📝 Resumo</h3>
+          <p><strong>RAG = busca inteligente + geração de texto.</strong> Permite que LLMs respondam com conhecimento atualizado, privado e verificável, sem retreinar o modelo. A qualidade depende mais do <strong>chunking</strong>, dos <strong>embeddings</strong> e do <strong>retrieval</strong> do que do tamanho do LLM.</p>
+        </div>
+      </div>
+
+      <div class="numero-slide">43 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina42.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

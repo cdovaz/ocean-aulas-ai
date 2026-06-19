@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fundamentos de LLM | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .glossario-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 1200px;
+      z-index: 1;
+    }
+
+    .glossario-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 0.85rem;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .glossario-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(52, 184, 245, 0.4);
+    }
+
+    .glossario-card h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      color: var(--texto-principal);
+    }
+
+    .glossario-card p {
+      font-size: 0.75rem;
+      color: var(--texto-secundario);
+      line-height: 1.4;
+    }
+
+    .tag-conceito {
+      display: inline-block;
+      padding: 0.1rem 0.4rem;
+      border-radius: 9999px;
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.4rem;
+    }
+
+    @media (max-width: 1100px) {
+      .glossario-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 800px) {
+      .glossario-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .glossario-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 1.25rem;">
+        <h2>Fundamentos de LLM</h2>
+        <p>Conceitos essenciais para entender modelos de linguagem e suas aplicações</p>
+      </div>
+
+      <div class="glossario-grid">
+        <div class="glossario-card">
+          <span class="tag-conceito" style="background: rgba(52, 184, 245, 0.15); color: #34B8F5;">Conceito</span>
+          <h3>LLM</h3>
+          <p>Large Language Model. Modelo de inteligência artificial treinado com enormes quantidades de texto para entender e gerar linguagem natural.</p>
+        </div>
+
+        <div class="glossario-card">
+          <span class="tag-conceito" style="background: rgba(0, 196, 140, 0.15); color: #00C48C;">Unidade</span>
+          <h3>Tokens</h3>
+          <p>Pequenas unidades de texto (palavras, partes de palavras ou caracteres) que o modelo processa. "Coração" pode ser dividido em "Cor", "ação".</p>
+        </div>
+
+        <div class="glossario-card">
+          <span class="tag-conceito" style="background: rgba(239, 68, 68, 0.15); color: #EF4444;">Risco</span>
+          <h3>Hallucination</h3>
+          <p>Quando o modelo gera informações falsas, inventadas ou incoerentes, mas apresenta-as com aparência de verdade.</p>
+        </div>
+
+        <div class="glossario-card">
+          <span class="tag-conceito" style="background: rgba(123, 97, 255, 0.15); color: #7B61FF;">Arquitetura</span>
+          <h3>Agents</h3>
+          <p>Sistemas de IA que combinam um LLM com ferramentas externas, memória e capacidade de tomar decisões para executar tarefas complexas.</p>
+        </div>
+
+        <div class="glossario-card">
+          <span class="tag-conceito" style="background: rgba(239, 68, 68, 0.15); color: #EF4444;">Segurança</span>
+          <h3>Prompt Injection</h3>
+          <p>Técnica maliciosa em que o usuário insere instruções no prompt para manipular o comportamento do modelo e burlar suas restrições.</p>
+        </div>
+
+        <div class="glossario-card">
+          <span class="tag-conceito" style="background: rgba(245, 158, 11, 0.15); color: #F59E0B;">Técnico</span>
+          <h3>Model Weights / Parameters</h3>
+          <p>Os "parâmetros" são os valores numéricos ajustados durante o treinamento. Billões de parâmetros definem o conhecimento e comportamento do modelo.</p>
+        </div>
+
+        <div class="glossario-card">
+          <span class="tag-conceito" style="background: rgba(52, 184, 245, 0.15); color: #34B8F5;">Técnica</span>
+          <h3>Fine-tuning</h3>
+          <p>Processo de ajustar um modelo pré-treinado com dados específicos de um domínio ou tarefa, melhorando sua performance em casos particulares.</p>
+        </div>
+
+        <div class="glossario-card">
+          <span class="tag-conceito" style="background: rgba(0, 196, 140, 0.15); color: #00C48C;">Técnica</span>
+          <h3>RAG</h3>
+          <p>Retrieval-Augmented Generation. Técnica que combina busca em base de conhecimento com geração de texto, permitindo respostas baseadas em dados atualizados.</p>
+        </div>
+
+        <div class="glossario-card">
+          <span class="tag-conceito" style="background: rgba(245, 158, 11, 0.15); color: #F59E0B;">Configuração</span>
+          <h3>Temperatura</h3>
+          <p>Controla a criatividade das respostas. Valores baixos (0.1) geram textos mais previsíveis; valores altos (1.0+) geram respostas mais criativas e arriscadas.</p>
+        </div>
+
+        <div class="glossario-card">
+          <span class="tag-conceito" style="background: rgba(123, 97, 255, 0.15); color: #7B61FF;">Configuração</span>
+          <h3>Top-K</h3>
+          <p>Limita a escolha do próximo token aos K tokens mais prováveis. Reduz a aleatoriedade e evita palavras muito improváveis.</p>
+        </div>
+
+        <div class="glossario-card">
+          <span class="tag-conceito" style="background: rgba(52, 184, 245, 0.15); color: #34B8F5;">Configuração</span>
+          <h3>Top-P</h3>
+          <p>Nucleus sampling. Considera apenas o conjunto mínimo de tokens cuja soma de probabilidades atinge P (ex: 0.9). Mais flexível que Top-K.</p>
+        </div>
+      </div>
+
+      <div class="numero-slide">6 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina5.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina7.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

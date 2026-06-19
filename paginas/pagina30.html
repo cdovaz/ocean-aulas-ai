@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tipos de Fine-tuning — Parte 1 | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .tipos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.55rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .tipo-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.7rem;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .tipo-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0, 196, 140, 0.4);
+    }
+
+    .tipo-card .icone {
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .tipo-card h3 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: var(--texto-principal);
+      line-height: 1.2;
+    }
+
+    .tipo-card p {
+      font-size: 0.7rem;
+      color: var(--texto-secundario);
+      line-height: 1.35;
+      margin-bottom: 0.35rem;
+    }
+
+    .tipo-card .tag {
+      display: inline-block;
+      padding: 0.1rem 0.4rem;
+      border-radius: 9999px;
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+
+    .tag.custo-alto { background: rgba(239, 68, 68, 0.15); color: #EF4444; }
+    .tag.padrao { background: rgba(0, 196, 140, 0.15); color: #00C48C; }
+    .tag.economico { background: rgba(52, 184, 245, 0.15); color: #34B8F5; }
+
+    @media (max-width: 900px) {
+      .tipos-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .tipos-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 0.75rem;">
+        <h2>Tipos de Fine-tuning — Parte 1</h2>
+        <p>Full, PEFT, LoRA, QLoRA e Instruction Tuning</p>
+      </div>
+
+      <div class="tipos-grid">
+        <div class="tipo-card">
+          <div class="icone">🔄</div>
+          <span class="tag custo-alto">Custo alto</span>
+          <h3>Full Fine-tuning</h3>
+          <p>Atualiza todos os parâmetros do modelo. Requer muita GPU e memória. Pode causar catastrophic forgetting.</p>
+        </div>
+
+        <div class="tipo-card">
+          <div class="icone">⚡</div>
+          <span class="tag padrao">Padrão atual</span>
+          <h3>PEFT</h3>
+          <p>Parameter-Efficient Fine-Tuning. Atualiza apenas uma pequena parte dos parâmetros. Muito mais barato e rápido.</p>
+        </div>
+
+        <div class="tipo-card">
+          <div class="icone">🔧</div>
+          <span class="tag padrao">Mais usado</span>
+          <h3>LoRA</h3>
+          <p>Low-Rank Adaptation. Adiciona pequenas matrizes treináveis em camadas específicas e congela os pesos originais.</p>
+        </div>
+
+        <div class="tipo-card">
+          <div class="icone">🗜️</div>
+          <span class="tag economico">Econômico</span>
+          <h3>QLoRA</h3>
+          <p>LoRA + quantização em 4 bits. Permite fine-tune de grandes modelos em GPUs menores.</p>
+        </div>
+
+        <div class="tipo-card">
+          <div class="icone">📋</div>
+          <span class="tag padrao">Instruções</span>
+          <h3>Instruction Fine-tuning</h3>
+          <p>Modelo aprende a seguir instruções em formato pergunta-resposta. Base de Alpaca, Vicuna, OpenHermes.</p>
+        </div>
+      </div>
+
+      <div class="numero-slide">30 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina29.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina31.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

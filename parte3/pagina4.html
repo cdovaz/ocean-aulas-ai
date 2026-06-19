@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agente de Relatórios na Prática | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .code-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .code-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .code-card.full {
+      grid-column: 1 / -1;
+    }
+
+    .code-card h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--texto-principal);
+    }
+
+    .code-card p, .code-card li {
+      font-size: 0.78rem;
+      color: var(--texto-secundario);
+      line-height: 1.45;
+    }
+
+    .code-card ul {
+      list-style: none;
+      margin-top: 0.4rem;
+    }
+
+    .code-card li {
+      margin-bottom: 0.3rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .code-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--azul-claro);
+      font-weight: 800;
+    }
+
+    .code-block {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      padding: 0.75rem;
+      font-family: 'Inter', monospace;
+      font-size: 0.7rem;
+      line-height: 1.5;
+      color: var(--texto-principal);
+      overflow-x: auto;
+      margin-top: 0.5rem;
+    }
+
+    .code-block .kw { color: var(--roxo-ia); }
+    .code-block .fn { color: var(--verde-ocean); }
+    .code-block .str { color: var(--azul-claro); }
+    .code-block .com { color: var(--texto-secundario); }
+
+    @media (max-width: 900px) {
+      .code-grid { grid-template-columns: 1fr; max-width: 700px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 1rem;">
+        <h2>Agente de Relatórios na Prática</h2>
+        <p>Exemplo simplificado de implementação com LangGraph</p>
+      </div>
+
+      <div class="code-grid">
+        <div class="code-card">
+          <h3>🧩 Estados do grafo</h3>
+          <ul>
+            <li><strong>receber_pedido:</strong> valida entradas do usuário</li>
+            <li><strong>buscar_dados:</strong> consulta Supabase e APIs</li>
+            <li><strong>recuperar_contexto:</strong> busca no Qdrant</li>
+            <li><strong>gerar_relatorio:</strong> chama Gemini API</li>
+            <li><strong>revisar:</strong> checa formato e fontes</li>
+            <li><strong>entregar:</strong> salva e retorna ao usuário</li>
+          </ul>
+        </div>
+
+        <div class="code-card">
+          <h3>📝 Prompt para o Gemini</h3>
+          <div class="code-block">
+"""<span class="str">Você é um analista de dados.
+Gere um relatório sobre {tema} no período {periodo}.
+Use apenas as fontes fornecidas abaixo.
+Formato: markdown com resumo, insights e recomendações.
+Fontes:
+{contexto_qdrant}
+{dados_supabase}</span>"""
+          </div>
+        </div>
+
+        <div class="code-card full">
+          <h3>🐍 Estrutura do código (conceitual)</h3>
+          <div class="code-block">
+<span class="kw">from</span> langgraph.graph <span class="kw">import</span> StateGraph
+
+builder = StateGraph(AgentState)
+builder.add_node(<span class="str">"receber_pedido"</span>, receber_pedido)
+builder.add_node(<span class="str">"buscar_dados"</span>, buscar_dados)
+builder.add_node(<span class="str">"recuperar_contexto"</span>, recuperar_contexto)
+builder.add_node(<span class="str">"gerar_relatorio"</span>, gerar_relatorio)
+builder.add_node(<span class="str">"revisar"</span>, revisar)
+builder.add_node(<span class="str">"entregar"</span>, entregar)
+
+builder.set_entry_point(<span class="str">"receber_pedido"</span>)
+builder.add_edge(<span class="str">"receber_pedido"</span>, <span class="str">"buscar_dados"</span>)
+builder.add_edge(<span class="str">"buscar_dados"</span>, <span class="str">"recuperar_contexto"</span>)
+<span class="com"># ... demais arestas e condições</span>
+graph = builder.compile()
+          </div>
+        </div>
+      </div>
+
+      <div class="numero-slide">4 / 5</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina3.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina5.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

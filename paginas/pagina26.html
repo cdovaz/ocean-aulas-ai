@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top-K | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .param-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .param-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.75rem;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .param-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0, 196, 140, 0.4);
+    }
+
+    .param-card.wide {
+      grid-column: span 2;
+    }
+
+    .param-card.full {
+      grid-column: 1 / -1;
+    }
+
+    .param-card .icone {
+      font-size: 1.3rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .param-card h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      color: var(--texto-principal);
+      line-height: 1.2;
+    }
+
+    .param-card p, .param-card li {
+      font-size: 0.72rem;
+      color: var(--texto-secundario);
+      line-height: 1.45;
+    }
+
+    .param-card ul {
+      list-style: none;
+      text-align: left;
+      margin-top: 0.35rem;
+    }
+
+    .param-card li {
+      margin-bottom: 0.25rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .param-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--verde-ocean);
+      font-weight: 800;
+    }
+
+    .token-demo {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-top: 0.4rem;
+    }
+
+    .token-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.35rem 0.5rem;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      font-size: 0.68rem;
+    }
+
+    .token-row.allowed {
+      border-left: 3px solid var(--verde-ocean);
+    }
+
+    .token-row.blocked {
+      border-left: 3px solid rgba(255, 255, 255, 0.15);
+      opacity: 0.55;
+    }
+
+    .token-bar {
+      height: 6px;
+      border-radius: 3px;
+      background: var(--verde-ocean);
+      min-width: 20px;
+    }
+
+    .destaque-topk {
+      background: linear-gradient(135deg, rgba(0, 196, 140, 0.1) 0%, rgba(20, 40, 160, 0.1) 100%);
+      border-color: rgba(0, 196, 140, 0.2);
+    }
+
+    @media (max-width: 900px) {
+      .param-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .param-card.wide, .param-card.full {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .param-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 0.75rem;">
+        <h2>Top-K</h2>
+        <p>Restrinja a amostragem aos K tokens mais prováveis</p>
+      </div>
+
+      <div class="param-grid">
+        <div class="param-card destaque-topk">
+          <div class="icone">🔝</div>
+          <h3>O que é?</h3>
+          <p>O parâmetro <strong>top-k</strong> limita o modelo a escolher o próximo token apenas entre os <strong>k</strong> candidatos mais prováveis. Tokens fora do top-k são descartados.</p>
+        </div>
+
+        <div class="param-card">
+          <div class="icone">🎯</div>
+          <h3>K = 1</h3>
+          <ul>
+            <li>Comportamento <strong>greedy</strong></li>
+            <li>Sempre escolhe o token mais provável</li>
+            <li>Determinístico e repetitivo</li>
+          </ul>
+        </div>
+
+        <div class="param-card">
+          <div class="icone">🌊</div>
+          <h3>K alto (40–60)</h3>
+          <ul>
+            <li>Permite mais diversidade</li>
+            <li>Bom padrão para uso geral</li>
+            <li>Combine com top-p para evitar outliers</li>
+          </ul>
+        </div>
+
+        <div class="param-card wide">
+          <div class="icone">📊</div>
+          <h3>Exemplo: Top-K = 3</h3>
+          <div class="token-demo">
+            <div class="token-row allowed"><span>"Inteligência" — 45%</span><div class="token-bar" style="width: 45%;"></div></div>
+            <div class="token-row allowed"><span>"IA" — 30%</span><div class="token-bar" style="width: 30%;"></div></div>
+            <div class="token-row allowed"><span>"Tecnologia" — 15%</span><div class="token-bar" style="width: 15%;"></div></div>
+            <div class="token-row blocked"><span>"Banana" — 0.01%</span><div class="token-bar" style="width: 0.01%;"></div></div>
+            <div class="token-row blocked"><span>"Xadrez" — 0.005%</span><div class="token-bar" style="width: 0.005%;"></div></div>
+          </div>
+        </div>
+
+        <div class="param-card">
+          <div class="icone">⚙️</div>
+          <h3>Como Configurar</h3>
+          <ul>
+            <li><strong>1–5:</strong> respostas focadas</li>
+            <li><strong>20–40:</strong> equilíbrio padrão</li>
+            <li><strong>50+:</strong> maior criatividade</li>
+          </ul>
+        </div>
+
+        <div class="param-card full">
+          <p style="font-size:0.78rem; color:var(--texto-principal);">📌 <strong>Regra de ouro:</strong> top-k define <strong>quantos</strong> tokens o modelo pode considerar. Use valores moderados e ajuste conforme a qualidade das saídas.</p>
+        </div>
+      </div>
+
+      <div class="numero-slide">26 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina25.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina27.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

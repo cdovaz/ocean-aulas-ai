@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>História das LLMs | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      width: 100%;
+      max-width: 900px;
+      z-index: 1;
+      padding-left: 1.25rem;
+      border-left: 2px solid rgba(52, 184, 245, 0.3);
+    }
+
+    .timeline-item {
+      position: relative;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.55rem 0.85rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -1.55rem;
+      top: 0.75rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--azul-claro);
+      box-shadow: 0 0 8px rgba(52, 184, 245, 0.5);
+    }
+
+    .timeline-item .ano {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--azul-claro);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.1rem;
+    }
+
+    .timeline-item h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 0.15rem;
+      color: var(--texto-principal);
+    }
+
+    .timeline-item p {
+      font-size: 0.72rem;
+      color: var(--texto-secundario);
+      line-height: 1.35;
+    }
+
+    @media (max-width: 640px) {
+      .timeline {
+        padding-left: 1rem;
+      }
+      .timeline-item::before {
+        left: -1.35rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 0.75rem;">
+        <h2>Contexto Histórico</h2>
+        <p>A evolução dos modelos de linguagem até as LLMs modernas</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="ano">1950 — 1960</div>
+          <h3>Primeiras ideias de IA e linguagem</h3>
+          <p>O Teste de Turing (1950) e sistemas simbólicos iniciais lançam as bases para máquinas que processam linguagem.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="ano">1980 — 1990</div>
+          <h3>Modelos estatísticos e redes neurais</h3>
+          <p>Modelos de Markov e primeiras redes neurais começam a tratar a linguagem como probabilidade e padrões.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="ano">2012 — 2017</div>
+          <h3>Deep Learning no NLP</h3>
+          <p>Word2Vec, LSTMs, Seq2Seq e atenção revolucionam a representação e geração de texto.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="ano">2017</div>
+          <h3>Transformer: "Attention Is All You Need"</h3>
+          <p>Google publica a arquitetura Transformer, permitindo treinar modelos maiores e mais paralelizáveis.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="ano">2018</div>
+          <h3>BERT e GPT-1</h3>
+          <p>Google lança BERT para compreensão; OpenAI lança GPT-1, mostrando o potencial de modelos generativos.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="ano">2020</div>
+          <h3>GPT-3: escala impressionante</h3>
+          <p>Com 175 bilhões de parâmetros, GPT-3 demonstra capacidades emergentes de raciocínio e geração.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="ano">2022</div>
+          <h3>ChatGPT e popularização massiva</h3>
+          <p>ChatGPT atinge 100 milhões de usuários em poucos meses, tornando as LLMs acessíveis ao público geral.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="ano">2023 — 2024</div>
+          <h3>Multimodalidade e modelos open source</h3>
+          <p>GPT-4, Claude, Gemini e Llama expandem capacidades, enquanto modelos open source democratizam o acesso.</p>
+        </div>
+      </div>
+
+      <div class="numero-slide">7 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina6.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina8.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

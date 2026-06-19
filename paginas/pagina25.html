@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Temperature | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .param-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .param-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.75rem;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .param-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0, 196, 140, 0.4);
+    }
+
+    .param-card.wide {
+      grid-column: span 2;
+    }
+
+    .param-card.full {
+      grid-column: 1 / -1;
+    }
+
+    .param-card .icone {
+      font-size: 1.3rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .param-card h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      color: var(--texto-principal);
+      line-height: 1.2;
+    }
+
+    .param-card p, .param-card li {
+      font-size: 0.72rem;
+      color: var(--texto-secundario);
+      line-height: 1.45;
+    }
+
+    .param-card ul {
+      list-style: none;
+      text-align: left;
+      margin-top: 0.35rem;
+    }
+
+    .param-card li {
+      margin-bottom: 0.25rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .param-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--verde-ocean);
+      font-weight: 800;
+    }
+
+    .escala {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .escala-item {
+      flex: 1;
+      text-align: center;
+      padding: 0.45rem 0.3rem;
+      border-radius: 8px;
+      background: rgba(0, 196, 140, 0.08);
+      border: 1px solid rgba(0, 196, 140, 0.15);
+    }
+
+    .escala-item span {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--texto-principal);
+    }
+
+    .escala-item small {
+      font-size: 0.6rem;
+      color: var(--texto-secundario);
+    }
+
+    .destaque-temp {
+      background: linear-gradient(135deg, rgba(0, 196, 140, 0.1) 0%, rgba(20, 40, 160, 0.1) 100%);
+      border-color: rgba(0, 196, 140, 0.2);
+    }
+
+    @media (max-width: 900px) {
+      .param-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .param-card.wide, .param-card.full {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .param-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 0.75rem;">
+        <h2>Temperature</h2>
+        <p>Controle o equilíbrio entre respostas previsíveis e criativas</p>
+      </div>
+
+      <div class="param-grid">
+        <div class="param-card destaque-temp">
+          <div class="icone">🌡️</div>
+          <h3>O que é?</h3>
+          <p>A <strong>temperature</strong> regula a aleatoriedade na escolha do próximo token. Ela divide os logits antes do softmax, alterando o quão “plana” fica a distribuição de probabilidades.</p>
+        </div>
+
+        <div class="param-card">
+          <div class="icone">📉</div>
+          <h3>Temperatura Baixa (&lt; 0.3)</h3>
+          <ul>
+            <li>Respostas mais determinísticas</li>
+            <li>Escolhe quase sempre o token mais provável</li>
+            <li>Ideal para código, matemática e extração de dados</li>
+          </ul>
+        </div>
+
+        <div class="param-card">
+          <div class="icone">📈</div>
+          <h3>Temperatura Alta (&gt; 0.7)</h3>
+          <ul>
+            <li>Distribuição mais uniforme</li>
+            <li>Tokens improváveis ganham chance</li>
+            <li>Ideal para brainstorming e textos criativos</li>
+          </ul>
+        </div>
+
+        <div class="param-card wide">
+          <div class="icone">🎚️</div>
+          <h3>Escala de Uso</h3>
+          <div class="escala">
+            <div class="escala-item"><span>0.0–0.3</span><small>Técnico / Factual</small></div>
+            <div class="escala-item"><span>0.4–0.6</span><small>Equilibrado</small></div>
+            <div class="escala-item"><span>0.7–1.0</span><small>Criativo</small></div>
+            <div class="escala-item"><span>1.2+</span><small>Aleatório</small></div>
+          </div>
+        </div>
+
+        <div class="param-card">
+          <div class="icone">💡</div>
+          <h3>Dica Prática</h3>
+          <p>Use <strong>temperature = 0</strong> para tarefas onde a reprodutibilidade importa. Combine com <strong>top-p</strong> e <strong>top-k</strong> para refinar a amostragem.</p>
+        </div>
+
+        <div class="param-card full">
+          <p style="font-size:0.78rem; color:var(--texto-principal);">📌 <strong>Regra de ouro:</strong> temperature controla <strong>quão arriscadas</strong> são as escolhas do modelo. Baixa = segura e repetível; alta = criativa e imprevisível.</p>
+        </div>
+      </div>
+
+      <div class="numero-slide">25 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina24.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina26.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

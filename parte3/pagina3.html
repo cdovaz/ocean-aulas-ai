@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fluxo de Dados do Agente | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .flow-wrapper {
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .flow-row {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      gap: 0.6rem;
+      margin-bottom: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .flow-step {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 0.75rem;
+      min-width: 150px;
+      flex: 1;
+      text-align: center;
+      backdrop-filter: blur(8px);
+    }
+
+    .flow-step .icone {
+      font-size: 1.4rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .flow-step h4 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--texto-principal);
+      margin-bottom: 0.3rem;
+    }
+
+    .flow-step p {
+      font-size: 0.7rem;
+      color: var(--texto-secundario);
+      line-height: 1.35;
+    }
+
+    .flow-arrow {
+      display: flex;
+      align-items: center;
+      color: var(--azul-claro);
+      font-size: 1.2rem;
+    }
+
+    .flow-legend {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.72rem;
+      color: var(--texto-secundario);
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    @media (max-width: 800px) {
+      .flow-row { flex-direction: column; align-items: center; }
+      .flow-arrow { transform: rotate(90deg); margin: 0.3rem 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 1rem;">
+        <h2>Fluxo de Dados do Agente</h2>
+        <p>Como os dados percorrem a stack de ponta a ponta</p>
+      </div>
+
+      <div class="flow-wrapper">
+        <div class="flow-row">
+          <div class="flow-step">
+            <div class="icone">👤</div>
+            <h4>Usuário</h4>
+            <p>Solicita relatório: tema, período e formato</p>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="icone">🕸️</div>
+            <h4>LangGraph</h4>
+            <p>Orquestra o fluxo de estados e decide próximos passos</p>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="icone">⚡</div>
+            <h4>Redis</h4>
+            <p>Enfileira a tarefa e mantém estado de execução</p>
+          </div>
+        </div>
+
+        <div class="flow-row">
+          <div class="flow-step">
+            <div class="icone">🐘</div>
+            <h4>Supabase</h4>
+            <p>Consulta dados estruturados e histórico</p>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="icone">🔍</div>
+            <h4>Qdrant</h4>
+            <p>Recupera documentos e contexto relevante via embeddings</p>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="icone">🧠</div>
+            <h4>Gemini API</h4>
+            <p>Gera análise, sumarização e relatório final</p>
+          </div>
+        </div>
+
+        <div class="flow-row">
+          <div class="flow-step">
+            <div class="icone">✔️</div>
+            <h4>Revisão</h4>
+            <p>Valida formato, fontes e consistência</p>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="icone">📤</div>
+            <h4>Entrega</h4>
+            <p>Retorna PDF/markdown e notifica o usuário</p>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="icone">🗄️</div>
+            <h4>Persistência</h4>
+            <p>Salva relatório e logs no Supabase</p>
+          </div>
+        </div>
+
+        <div class="flow-legend">
+          <div class="legend-item"><div class="legend-dot" style="background: #34B8F5;"></div>Orquestração</div>
+          <div class="legend-item"><div class="legend-dot" style="background: #F59E0B;"></div>Cache/Fila</div>
+          <div class="legend-item"><div class="legend-dot" style="background: #00C48C;"></div>Dados</div>
+          <div class="legend-item"><div class="legend-dot" style="background: #7B61FF;"></div>Vetores</div>
+          <div class="legend-item"><div class="legend-dot" style="background: #1428A0;"></div>LLM</div>
+        </div>
+      </div>
+
+      <div class="numero-slide">3 / 5</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina2.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina4.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

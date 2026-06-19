@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arquitetura do RAG | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .arq-flow {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .arq-col {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 0.75rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .arq-col h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: var(--texto-principal);
+      text-align: center;
+    }
+
+    .flow-step {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 0.55rem;
+      margin-bottom: 0.35rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      font-size: 0.7rem;
+      color: var(--texto-secundario);
+      line-height: 1.4;
+    }
+
+    .flow-step .num {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--azul-samsung) 0%, var(--roxo-ia) 100%);
+      color: white;
+    }
+
+    .arrow-down {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--verde-ocean);
+      margin: 0.2rem 0;
+    }
+
+    .resposta-final {
+      grid-column: 1 / -1;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(0, 196, 140, 0.12) 0%, rgba(20, 40, 160, 0.12) 100%);
+      border: 1px solid rgba(0, 196, 140, 0.25);
+      padding: 0.6rem;
+      border-radius: 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--texto-principal);
+    }
+
+    @media (max-width: 800px) {
+      .arq-flow {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 0.75rem;">
+        <h2>Arquitetura do RAG</h2>
+        <p>Do documento bruto à resposta final com fontes</p>
+      </div>
+
+      <div class="arq-flow">
+        <div class="arq-col">
+          <h3>📥 Pipeline de Ingestão</h3>
+          <div class="flow-step"><span class="num">1</span>Documentos brutos</div>
+          <div class="arrow-down">↓</div>
+          <div class="flow-step"><span class="num">2</span>Chunking (divisão em pedaços)</div>
+          <div class="arrow-down">↓</div>
+          <div class="flow-step"><span class="num">3</span>Embedding (vetorização)</div>
+          <div class="arrow-down">↓</div>
+          <div class="flow-step"><span class="num">4</span>Armazenamento no vector database</div>
+        </div>
+
+        <div class="arq-col">
+          <h3>❓ Pipeline de Consulta</h3>
+          <div class="flow-step"><span class="num">5</span>Pergunta do usuário</div>
+          <div class="arrow-down">↓</div>
+          <div class="flow-step"><span class="num">6</span>Embedding da pergunta</div>
+          <div class="arrow-down">↓</div>
+          <div class="flow-step"><span class="num">7</span>Busca por similaridade</div>
+          <div class="arrow-down">↓</div>
+          <div class="flow-step"><span class="num">8</span>Recuperação dos top-k chunks</div>
+          <div class="arrow-down">↓</div>
+          <div class="flow-step"><span class="num">9</span>Construção do prompt com contexto</div>
+          <div class="arrow-down">↓</div>
+          <div class="flow-step"><span class="num">10</span>Geração da resposta pelo LLM</div>
+        </div>
+
+        <div class="resposta-final">
+          11. Resposta final (opcionalmente com fontes)
+        </div>
+      </div>
+
+      <div class="numero-slide">38 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina37.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina39.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tokenização | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .token-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 1200px;
+      z-index: 1;
+    }
+
+    .token-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1rem;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .token-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(52, 184, 245, 0.4);
+    }
+
+    .token-card.destaque {
+      border-color: rgba(0, 196, 140, 0.4);
+      background: rgba(0, 196, 140, 0.06);
+    }
+
+    .token-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--texto-principal);
+    }
+
+    .token-card p {
+      font-size: 0.8rem;
+      color: var(--texto-secundario);
+      line-height: 1.45;
+      margin-bottom: 0.75rem;
+    }
+
+    .exemplo {
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+      padding: 0.75rem;
+      font-family: 'Inter', monospace;
+      font-size: 0.75rem;
+      line-height: 1.6;
+    }
+
+    .exemplo .frase {
+      color: var(--texto-secundario);
+      margin-bottom: 0.5rem;
+      font-style: italic;
+    }
+
+    .token {
+      display: inline-block;
+      padding: 0.2rem 0.4rem;
+      margin: 0.15rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.7rem;
+    }
+
+    .token.word { background: rgba(52, 184, 245, 0.25); color: #34B8F5; }
+    .token.char { background: rgba(245, 158, 11, 0.25); color: #F59E0B; }
+    .token.sub { background: rgba(0, 196, 140, 0.25); color: #00C48C; }
+
+    .pros-contras {
+      margin-top: 0.75rem;
+      font-size: 0.72rem;
+      color: var(--texto-secundario);
+      line-height: 1.4;
+    }
+
+    .pros-contras strong {
+      color: var(--texto-principal);
+    }
+
+    @media (max-width: 950px) {
+      .token-grid {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 1rem;">
+        <h2>O que é um Token?</h2>
+        <p>Como as LLMs dividem o texto antes de processá-lo</p>
+      </div>
+
+      <div class="token-grid">
+        <div class="token-card">
+          <h3>📝 Token por Palavra</h3>
+          <p>Cada palavra vira um token. Simples de entender, mas cria um vocabulário enorme e dificulta palavras desconhecidas.</p>
+          <div class="exemplo">
+            <div class="frase">"Inteligência Artificial é incrível"</div>
+            <div>
+              <span class="token word">Inteligência</span>
+              <span class="token word">Artificial</span>
+              <span class="token word">é</span>
+              <span class="token word">incrível</span>
+            </div>
+          </div>
+          <div class="pros-contras">
+            <strong>✓</strong> Intuitivo<br>
+            <strong>✗</strong> Vocabulário gigante; "incrível" e "incríveis" são tokens diferentes
+          </div>
+        </div>
+
+        <div class="token-card">
+          <h3>🔤 Token por Caractere</h3>
+          <p>Cada caractere é um token. O vocabulário fica pequeno, mas as sequências ficam muito longas e o modelo perde o sentido das palavras.</p>
+          <div class="exemplo">
+            <div class="frase">"IA é top"</div>
+            <div>
+              <span class="token char">I</span>
+              <span class="token char">A</span>
+              <span class="token char"> </span>
+              <span class="token char">é</span>
+              <span class="token char"> </span>
+              <span class="token char">t</span>
+              <span class="token char">o</span>
+              <span class="token char">p</span>
+            </div>
+          </div>
+          <div class="pros-contras">
+            <strong>✓</strong> Vocabulário minúsculo<br>
+            <strong>✗</strong> Sequências longas; dificulta aprender significados
+          </div>
+        </div>
+
+        <div class="token-card destaque">
+          <h3>⚡ Tokenização Mista (Subword)</h3>
+          <p>Abordagem usada atualmente por GPT, Llama e outros. Divide palavras em pedaços frequentes (subwords), equilibrando vocabulário e tamanho da sequência.</p>
+          <div class="exemplo">
+            <div class="frase">"Inteligência Artificial é incrível"</div>
+            <div>
+              <span class="token sub">Intel</span>
+              <span class="token sub">ig</span>
+              <span class="token sub">ência</span>
+              <span class="token sub">Art</span>
+              <span class="token sub">ificial</span>
+              <span class="token sub"> é </span>
+              <span class="token sub">incr</span>
+              <span class="token sub">ível</span>
+            </div>
+          </div>
+          <div class="pros-contras">
+            <strong>✓</strong> Equilíbrio entre vocabulário e sequência<br>
+            <strong>✓</strong> Lida bem com palavras novas e variações<br>
+            <strong>Técnica:</strong> BPE (Byte Pair Encoding) e similares
+          </div>
+        </div>
+      </div>
+
+      <div class="numero-slide">10 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina9.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina11.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

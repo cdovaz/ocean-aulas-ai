@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ferramentas de Fine-tuning | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .tabela-container {
+      width: 100%;
+      max-width: 950px;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .tabela-ferramentas {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.75rem;
+    }
+
+    .tabela-ferramentas th {
+      text-align: left;
+      padding: 0.6rem 0.7rem;
+      font-weight: 700;
+      color: var(--texto-principal);
+      border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+    }
+
+    .tabela-ferramentas td {
+      padding: 0.55rem 0.7rem;
+      color: var(--texto-secundario);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .tabela-ferramentas tr:hover td {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--texto-principal);
+    }
+
+    .tabela-ferramentas tr:last-child td {
+      border-bottom: none;
+    }
+
+    .tool-name {
+      font-weight: 700;
+      color: var(--texto-principal);
+    }
+
+    @media (max-width: 640px) {
+      .tabela-ferramentas {
+        font-size: 0.68rem;
+      }
+      .tabela-ferramentas th, .tabela-ferramentas td {
+        padding: 0.45rem 0.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 0.75rem;">
+        <h2>Ferramentas e Frameworks</h2>
+        <p>Ecossistema para treinar e deployar modelos fine-tuned</p>
+      </div>
+
+      <div class="tabela-container">
+        <table class="tabela-ferramentas">
+          <thead>
+            <tr>
+              <th>Ferramenta</th>
+              <th>Uso principal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tool-name">Hugging Face Transformers</span></td>
+              <td>Base para carregar e treinar modelos</td>
+            </tr>
+            <tr>
+              <td><span class="tool-name">PEFT</span></td>
+              <td>LoRA, QLoRA, adapters e técnicas eficientes</td>
+            </tr>
+            <tr>
+              <td><span class="tool-name">TRL</span></td>
+              <td>SFTTrainer, DPOTrainer e treinamento por preferências</td>
+            </tr>
+            <tr>
+              <td><span class="tool-name">bitsandbytes</span></td>
+              <td>Quantização 4/8 bits para economia de memória</td>
+            </tr>
+            <tr>
+              <td><span class="tool-name">Unsloth</span></td>
+              <td>Treinamento rápido e eficiente de LLMs</td>
+            </tr>
+            <tr>
+              <td><span class="tool-name">Axolotl</span></td>
+              <td>Configuração YAML simplificada para fine-tuning</td>
+            </tr>
+            <tr>
+              <td><span class="tool-name">Llama-Factory</span></td>
+              <td>Interface unificada para vários modelos</td>
+            </tr>
+            <tr>
+              <td><span class="tool-name">Fireworks / Together / OpenAI / Google</span></td>
+              <td>Fine-tuning via API, sem gerenciar infraestrutura</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="numero-slide">34 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina33.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina35.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+    </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

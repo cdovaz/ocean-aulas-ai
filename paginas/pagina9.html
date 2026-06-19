@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Limitações das LLMs | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .limitacoes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .limitacao-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 0.9rem;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .limitacao-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(239, 68, 68, 0.4);
+    }
+
+    .limitacao-card .icone {
+      font-size: 1.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .limitacao-card h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      color: var(--texto-principal);
+    }
+
+    .limitacao-card p {
+      font-size: 0.78rem;
+      color: var(--texto-secundario);
+      line-height: 1.4;
+    }
+
+    @media (max-width: 900px) {
+      .limitacoes-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .limitacoes-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 1.25rem;">
+        <h2>Limitações e Problemas Atuais</h2>
+        <p>O que ainda precisa ser considerado ao usar LLMs em produção</p>
+      </div>
+
+      <div class="limitacoes-grid">
+        <div class="limitacao-card">
+          <div class="icone">🎭</div>
+          <h3>Hallucination</h3>
+          <p>O modelo pode inventar fatos, nomes, dados e referências, apresentando-as com confiança.</p>
+        </div>
+
+        <div class="limitacao-card">
+          <div class="icone">⚖️</div>
+          <h3>Viés e Toxicidade</h3>
+          <p>Reflete vieses presentes nos dados de treinamento, podendo reproduzir estereótipos ou conteúdos ofensivos.</p>
+        </div>
+
+        <div class="limitacao-card">
+          <div class="icone">💸</div>
+          <h3>Custo Computacional</h3>
+          <p>Treinamento e inferência de modelos grandes exigem hardware caro e consomem muita energia.</p>
+        </div>
+
+        <div class="limitacao-card">
+          <div class="icone">📅</div>
+          <h3>Dados Desatualizados</h3>
+          <p>O conhecimento do modelo é limitado aos dados de treinamento e não se atualiza automaticamente.</p>
+        </div>
+
+        <div class="limitacao-card">
+          <div class="icone">🔓</div>
+          <h3>Prompt Injection</h3>
+          <p>Instruções maliciosas inseridas pelo usuário podem manipular o modelo e burlar restrições de segurança.</p>
+        </div>
+
+        <div class="limitacao-card">
+          <div class="icone">🧮</div>
+          <h3>Raciocínio e Matemática</h3>
+          <p>Dificuldade com problemas lógicos complexos, cálculos precisos e raciocínio de múltiplas etapas.</p>
+        </div>
+
+        <div class="limitacao-card">
+          <div class="icone">🕵️</div>
+          <h3>Caixa Preta</h3>
+          <p>Falta de transparência dificulta entender por que o modelo gerou determinada resposta.</p>
+        </div>
+
+        <div class="limitacao-card">
+          <div class="icone">🔒</div>
+          <h3>Privacidade</h3>
+          <p>Dados sensíveis enviados ao modelo podem ser armazenados, retidos ou vazar em respostas futuras.</p>
+        </div>
+
+        <div class="limitacao-card">
+          <div class="icone">🌐</div>
+          <h3>Multilinguagem Limitada</h3>
+          <p>Performance varia bastante entre idiomas, favorecendo línguas com mais dados na web, como o inglês.</p>
+        </div>
+      </div>
+
+      <div class="numero-slide">9 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina8.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina10.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

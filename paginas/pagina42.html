@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LangGraph, FastAPI e Qdrant | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .impl-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .impl-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.7rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .impl-card.full {
+      grid-column: 1 / -1;
+    }
+
+    .impl-card h3 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      color: var(--texto-principal);
+    }
+
+    .impl-card p, .impl-card li {
+      font-size: 0.68rem;
+      color: var(--texto-secundario);
+      line-height: 1.45;
+    }
+
+    .impl-card ul {
+      list-style: none;
+    }
+
+    .impl-card li {
+      margin-bottom: 0.2rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .impl-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--verde-ocean);
+      font-weight: 800;
+    }
+
+    .code-container {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 0.5rem;
+      margin-top: 0.35rem;
+      overflow-x: auto;
+    }
+
+    .code-block {
+      font-family: 'Fira Code', 'Consolas', monospace;
+      font-size: 0.55rem;
+      line-height: 1.5;
+      color: #E2E8F0;
+      white-space: pre;
+    }
+
+    .code-comment { color: #64748B; }
+    .code-keyword { color: #C084FC; }
+    .code-string { color: #4ADE80; }
+    .code-func { color: #60A5FA; }
+
+    .graph-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 0.4rem 0;
+      flex-wrap: wrap;
+    }
+
+    .graph-node {
+      background: rgba(20, 40, 160, 0.25);
+      border: 1px solid rgba(52, 184, 245, 0.3);
+      border-radius: 8px;
+      padding: 0.4rem 0.7rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--texto-principal);
+    }
+
+    .graph-arrow {
+      color: var(--verde-ocean);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 900px) {
+      .impl-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 0.6rem;">
+        <h2>LangGraph, FastAPI e Qdrant</h2>
+        <p>Orquestração do fluxo RAG e deploy em API</p>
+      </div>
+
+      <div class="impl-grid">
+        <div class="impl-card">
+          <h3>🕸️ Grafo LangGraph</h3>
+          <p>Modela o RAG como um grafo de estado, permitindo loops e decisões condicionais.</p>
+          <div class="graph-flow">
+            <div class="graph-node">pergunta</div>
+            <span class="graph-arrow">→</span>
+            <div class="graph-node">retrieve</div>
+            <span class="graph-arrow">→</span>
+            <div class="graph-node">generate</div>
+            <span class="graph-arrow">→</span>
+            <div class="graph-node">END</div>
+          </div>
+          <div class="code-container">
+            <div class="code-block"><span class="code-keyword">class</span> <span class="code-func">RAGState</span>(TypedDict):
+    pergunta: str
+    contexto: List[Document]
+    resposta: str
+
+workflow = <span class="code-func">StateGraph</span>(RAGState)
+workflow.<span class="code-func">add_node</span>(<span class="code-string">"retrieve"</span>, retrieve)
+workflow.<span class="code-func">add_node</span>(<span class="code-string">"generate"</span>, generate)
+workflow.<span class="code-func">set_entry_point</span>(<span class="code-string">"retrieve"</span>)
+workflow.<span class="code-func">add_edge</span>(<span class="code-string">"retrieve"</span>, <span class="code-string">"generate"</span>)
+app = workflow.<span class="code-func">compile</span>()</div>
+          </div>
+        </div>
+
+        <div class="impl-card">
+          <h3>🚀 FastAPI</h3>
+          <ul>
+            <li>Endpoint <code>POST /perguntar</code> recebe a pergunta</li>
+            <li>Invoca o grafo compilado <code>rag_app.invoke()</code></li>
+            <li>Retorna pergunta e resposta em JSON</li>
+            <li><code>GET /health</code> para health check</li>
+          </ul>
+          <div class="code-container">
+            <div class="code-block"><span class="code-keyword">@app.post</span>(<span class="code-string">"/perguntar"</span>)
+<span class="code-keyword">def</span> <span class="code-func">perguntar</span>(request: PerguntaRequest):
+    resultado = rag_app.<span class="code-func">invoke</span>({
+        <span class="code-string">"pergunta"</span>: request.pergunta
+    })
+    <span class="code-keyword">return</span> {<span class="code-string">"resposta"</span>: resultado[<span class="code-string">"resposta"</span>]}</div>
+          </div>
+        </div>
+
+        <div class="impl-card full">
+          <h3>🐳 Docker Compose — Qdrant</h3>
+          <div class="code-container">
+            <div class="code-block">services:
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports:
+      - <span class="code-string">"6333:6333"</span>
+    volumes:
+      - qdrant_storage:/qdrant/storage
+volumes:
+  qdrant_storage:</div>
+          </div>
+          <p style="text-align: center; margin-top: 0.35rem;">Suba com <code>docker-compose up -d</code> e a API com <code>uvicorn main:app --reload</code>.</p>
+        </div>
+      </div>
+
+      <div class="numero-slide">42 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina41.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina43.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

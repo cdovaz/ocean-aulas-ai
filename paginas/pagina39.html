@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentos, Chunking e Embeddings | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .comp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .comp-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.7rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .comp-card h3 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      color: var(--texto-principal);
+    }
+
+    .comp-card p, .comp-card li {
+      font-size: 0.7rem;
+      color: var(--texto-secundario);
+      line-height: 1.45;
+    }
+
+    .comp-card table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.62rem;
+    }
+
+    .comp-card th, .comp-card td {
+      padding: 0.3rem 0.4rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      color: var(--texto-secundario);
+    }
+
+    .comp-card th {
+      color: var(--texto-principal);
+      font-weight: 700;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .comp-card ul {
+      list-style: none;
+    }
+
+    .comp-card li {
+      margin-bottom: 0.2rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .comp-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--verde-ocean);
+      font-weight: 800;
+    }
+
+    .code-snippet {
+      font-family: 'Fira Code', 'Consolas', monospace;
+      font-size: 0.6rem;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      padding: 0.4rem;
+      margin-top: 0.35rem;
+      color: #E2E8F0;
+    }
+
+    @media (max-width: 800px) {
+      .comp-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 0.75rem;">
+        <h2>Documentos, Chunking e Embeddings</h2>
+        <p>Preparando a base de conhecimento para o RAG</p>
+      </div>
+
+      <div class="comp-grid">
+        <div class="comp-card">
+          <h3>📄 Documentos</h3>
+          <ul>
+            <li>PDFs, Word, sites, bancos de dados</li>
+            <li>Notion, Confluence, APIs internas</li>
+            <li>Exigem extração e limpeza antes de vetorizar</li>
+          </ul>
+        </div>
+
+        <div class="comp-card">
+          <h3>✂️ Chunking</h3>
+          <table>
+            <thead>
+              <tr><th>Estratégia</th><th>Quando usar</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Tamanho fixo</td><td>Textos genéricos</td></tr>
+              <tr><td>Por parágrafos</td><td>Documentos estruturados</td></tr>
+              <tr><td>Por sentenças</td><td>Textos curtos e densos</td></tr>
+              <tr><td>Por semântica</td><td>Sentido importa mais</td></tr>
+              <tr><td>Com overlap</td><td>Manter contexto entre chunks</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top: 0.35rem;"><strong>Tamanho comum:</strong> 200–1000 tokens/chunk, overlap 10–20%.</p>
+        </div>
+
+        <div class="comp-card">
+          <h3>🔢 Embeddings</h3>
+          <p>Modelos que transformam texto em vetores numéricos densos, onde textos semanticamente similares ficam próximos no espaço vetorial.</p>
+          <div class="code-snippet">models/text-embedding-004  ← recomendado
+models/embedding-001</div>
+        </div>
+
+        <div class="comp-card">
+          <h3>🗄️ Vector Database: Qdrant</h3>
+          <ul>
+            <li>Open source e auto-hospedável</li>
+            <li>Alta performance em produção</li>
+            <li>Suporte a filtros de metadata</li>
+            <li>Fácil integração com LangChain</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="numero-slide">39 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina38.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina40.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

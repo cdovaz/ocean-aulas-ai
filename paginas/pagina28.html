@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O que é Fine-tuning? | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .ft-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.7rem;
+      width: 100%;
+      max-width: 1000px;
+      z-index: 1;
+    }
+
+    .ft-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 0.85rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .ft-card.destaque {
+      grid-column: 1 / -1;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(20, 40, 160, 0.15) 0%, rgba(0, 196, 140, 0.1) 100%);
+      border-color: rgba(0, 196, 140, 0.25);
+    }
+
+    .ft-card h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      color: var(--texto-principal);
+    }
+
+    .ft-card p {
+      font-size: 0.76rem;
+      color: var(--texto-secundario);
+      line-height: 1.45;
+    }
+
+    .ft-card.destaque h2 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+      background: linear-gradient(90deg, #FFFFFF 0%, var(--verde-ocean) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .ft-lista {
+      list-style: none;
+      text-align: left;
+      margin-top: 0.5rem;
+    }
+
+    .ft-lista li {
+      font-size: 0.75rem;
+      color: var(--texto-secundario);
+      margin-bottom: 0.35rem;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .ft-lista li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--verde-ocean);
+      font-weight: 800;
+    }
+
+    @media (max-width: 800px) {
+      .ft-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 0.75rem;">
+        <h2>O que é Fine-tuning?</h2>
+        <p>Adaptar um modelo pré-treinado para uma tarefa ou domínio específico</p>
+      </div>
+
+      <div class="ft-grid">
+        <div class="ft-card destaque">
+          <h2>Fine-tuning</h2>
+          <p>É o processo de pegar um modelo de IA já treinado e continuar seu treinamento com dados específicos da sua tarefa ou domínio.</p>
+        </div>
+
+        <div class="ft-card">
+          <h3>🎯 Objetivos</h3>
+          <ul class="ft-lista">
+            <li>Entender melhor um domínio (jurídico, médico, financeiro)</li>
+            <li>Seguir um formato específico de resposta</li>
+            <li>Melhorar qualidade onde prompt engineering não basta</li>
+          </ul>
+        </div>
+
+        <div class="ft-card">
+          <h3>💡 Benefício chave</h3>
+          <p>Reduzir custos de inferência: um <strong>modelo menor especializado</strong> pode superar um <strong>modelo grande genérico</strong> em tarefas específicas.</p>
+        </div>
+      </div>
+
+      <div class="numero-slide">28 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina27.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina29.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

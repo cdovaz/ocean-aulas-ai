@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tecnologias para Agentes | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 1000px;
+      z-index: 1;
+    }
+
+    .tech-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1rem;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .tech-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(52, 184, 245, 0.4);
+    }
+
+    .tech-card .logo-area-custom {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .tech-card .logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .tech-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--texto-principal);
+    }
+
+    .tech-card p {
+      font-size: 0.78rem;
+      color: var(--texto-secundario);
+      line-height: 1.45;
+      margin-bottom: 0.6rem;
+    }
+
+    .tech-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .tech-tag {
+      padding: 0.15rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .tech-tag.nocode { background: rgba(52, 184, 245, 0.15); color: #34B8F5; }
+    .tech-tag.opensource { background: rgba(0, 196, 140, 0.15); color: #00C48C; }
+    .tech-tag.framework { background: rgba(123, 97, 255, 0.15); color: #7B61FF; }
+    .tech-tag.lowcode { background: rgba(245, 158, 11, 0.15); color: #F59E0B; }
+
+    .tech-exemplo {
+      padding: 0.5rem 0.7rem;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 8px;
+      font-size: 0.7rem;
+      color: var(--texto-secundario);
+      line-height: 1.4;
+    }
+
+    .tech-exemplo strong {
+      color: var(--texto-principal);
+    }
+
+    @media (max-width: 850px) {
+      .tech-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 1rem;">
+        <h2>Tecnologias para Criar Agentes</h2>
+        <p>Ferramentas no-code, low-code e frameworks para construir agentes de IA</p>
+      </div>
+
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="logo-area-custom">
+            <div class="logo" style="background: #FF4A00;">Z</div>
+            <h3>Zapier</h3>
+          </div>
+          <p>Plataforma no-code para automação de workflows. Permite criar agentes simples conectando apps e serviços sem escrever código.</p>
+          <div class="tech-meta">
+            <span class="tech-tag nocode">No-code</span>
+            <span class="tech-tag lowcode">Low-code</span>
+          </div>
+          <div class="tech-exemplo">
+            <strong>Exemplo:</strong> Agente que lê e-mails, extrai dados e atualiza planilhas automaticamente.
+          </div>
+        </div>
+
+        <div class="tech-card">
+          <div class="logo-area-custom">
+            <div class="logo" style="background: #FF6D5A;">n8n</div>
+            <h3>n8n</h3>
+          </div>
+          <p>Ferramenta open source de automação de workflows com suporte a nodes de IA. Oferece mais controle que plataformas no-code e pode ser self-hosted.</p>
+          <div class="tech-meta">
+            <span class="tech-tag opensource">Open Source</span>
+            <span class="tech-tag lowcode">Low-code</span>
+          </div>
+          <div class="tech-exemplo">
+            <strong>Exemplo:</strong> Agente que integra CRM, envia mensagens no Slack e consulta APIs externas.
+          </div>
+        </div>
+
+        <div class="tech-card">
+          <div class="logo-area-custom">
+            <div class="logo" style="background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);">C</div>
+            <h3>CrewAI</h3>
+          </div>
+          <p>Framework Python para criar equipes de agentes colaborativos. Cada agente tem um papel, objetivo e ferramentas específicas.</p>
+          <div class="tech-meta">
+            <span class="tech-tag framework">Framework Python</span>
+            <span class="tech-tag opensource">Open Source</span>
+          </div>
+          <div class="tech-exemplo">
+            <strong>Exemplo:</strong> Equipe com pesquisador, redator e revisor que cria um artigo completo.
+          </div>
+        </div>
+
+        <div class="tech-card">
+          <div class="logo-area-custom">
+            <div class="logo" style="background: linear-gradient(135deg, #1C3C3C 0%, #3D8B8B 100%);">LG</div>
+            <h3>LangGraph / LangChain</h3>
+          </div>
+          <p>LangChain conecta LLMs a ferramentas e dados. LangGraph adiciona grafos de estado para construir agentes complexos com ciclos e ramificações.</p>
+          <div class="tech-meta">
+            <span class="tech-tag framework">Framework</span>
+            <span class="tech-tag opensource">Open Source</span>
+          </div>
+          <div class="tech-exemplo">
+            <strong>Exemplo:</strong> Agente de suporte que decide entre buscar FAQ, consultar API ou escalar para humano.
+          </div>
+        </div>
+      </div>
+
+      <div class="numero-slide">17 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina16.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina18.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

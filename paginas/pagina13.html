@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reduzir Hallucination — Parte 1 | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .mitigacao-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.55rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .mitigacao-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 0.75rem;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .mitigacao-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0, 196, 140, 0.4);
+    }
+
+    .mitigacao-card .icone {
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .mitigacao-card h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: var(--texto-principal);
+    }
+
+    .mitigacao-card p {
+      font-size: 0.72rem;
+      color: var(--texto-secundario);
+      line-height: 1.4;
+    }
+
+    .mitigacao-card .dica {
+      margin-top: 0.45rem;
+      padding: 0.35rem 0.55rem;
+      background: rgba(0, 196, 140, 0.08);
+      border-left: 3px solid var(--verde-ocean);
+      border-radius: 5px;
+      font-size: 0.65rem;
+      color: var(--texto-secundario);
+      line-height: 1.35;
+    }
+
+    @media (max-width: 850px) {
+      .mitigacao-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 0.75rem;">
+        <h2>Reduzir Hallucination</h2>
+        <p>Estratégias técnicas e de engenharia de prompt — Parte 1</p>
+      </div>
+
+      <div class="mitigacao-grid">
+        <div class="mitigacao-card">
+          <div class="icone">📚</div>
+          <h3>Use RAG</h3>
+          <p> Ancore as respostas do modelo em documentos confiáveis. Em vez de confiar apenas na memória do modelo, busque informações em uma base de conhecimento antes de gerar a resposta.</p>
+          <div class="dica">💡 Dica: use vector databases e embeddings para recuperar trechos relevantes.</div>
+        </div>
+
+        <div class="mitigacao-card">
+          <div class="icone">🧩</div>
+          <h3>Prompt Engineering</h3>
+          <p>Use técnicas como chain-of-thought, few-shot prompting e instruções explícitas para forçar o modelo a raciocinar passo a passo e justificar suas respostas.</p>
+          <div class="dica">💡 Dica: peça "pense passo a passo antes de responder".</div>
+        </div>
+
+        <div class="mitigacao-card">
+          <div class="icone">🎯</div>
+          <h3>Grounding e Domínio Restrito</h3>
+          <p>Defina claramente o escopo do que o modelo pode responder. Restrinja o modelo a um domínio específico e instrua-o a dizer "não sei" quando não tiver certeza.</p>
+          <div class="dica">💡 Dica: "Responda apenas com base nos documentos fornecidos."</div>
+        </div>
+
+        <div class="mitigacao-card">
+          <div class="icone">🌡️</div>
+          <h3>Controle de Temperatura e Top-P</h3>
+          <p>Reduza a temperatura e o top-p para obter respostas mais conservadoras e determinísticas, diminuindo a criatividade desnecessária que leva a inventos.</p>
+          <div class="dica">💡 Dica: para fatos, use temperatura 0.1 a 0.3.</div>
+        </div>
+
+        <div class="mitigacao-card">
+          <div class="icone">🔗</div>
+          <h3>Exija Fontes e Referências</h3>
+          <p>Instrua o modelo a citar as fontes utilizadas. Isso permite que o usuário verifique a informação e identifique possíveis alucinações.</p>
+          <div class="dica">💡 Dica: "Cite o trecho exato do documento que sustenta sua resposta."</div>
+        </div>
+      </div>
+
+      <div class="numero-slide">13 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina12.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina14.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

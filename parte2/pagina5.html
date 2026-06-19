@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kimi Work vs Gemini no Navegador | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .comp-table {
+      width: 100%;
+      max-width: 1000px;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 1.25rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .comp-table table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    .comp-table th {
+      text-align: left;
+      padding: 0.75rem 1rem;
+      font-weight: 700;
+      color: var(--texto-principal);
+      border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.75rem;
+    }
+
+    .comp-table td {
+      padding: 0.75rem 1rem;
+      color: var(--texto-secundario);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      vertical-align: top;
+    }
+
+    .comp-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .tool-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .tool-tag.kimi { color: var(--verde-ocean); }
+    .tool-tag.gemini { color: var(--azul-claro); }
+
+    .nota {
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: var(--texto-secundario);
+      text-align: center;
+    }
+
+    @media (max-width: 700px) {
+      .comp-table { font-size: 0.75rem; }
+      .comp-table th, .comp-table td { padding: 0.6rem 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 1rem;">
+        <h2>Kimi Work vs Gemini no Navegador</h2>
+        <p>Comparativo entre uso local/projeto e interface web pura</p>
+      </div>
+
+      <div class="comp-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Dimensão</th>
+              <th><span class="tool-tag gemini">🌐 Gemini (navegador)</span></th>
+              <th><span class="tool-tag kimi">💻 Kimi Work</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Contexto</strong></td>
+              <td>Conversa isolada; contexto limitado à sessão</td>
+              <td>Pode abrir projetos/pastas inteiras; contexto persistente do projeto</td>
+            </tr>
+            <tr>
+              <td><strong>Memória</strong></td>
+              <td>Histórico de conversas; sem memória de longo prazo nativa</td>
+              <td>Memória de arquivos, @menções e contexto de longo prazo</td>
+            </tr>
+            <tr>
+              <td><strong>Execução</strong></td>
+              <td>Respostas em texto; sem ação no seu ambiente</td>
+              <td>Pode executar comandos, ler/escrever arquivos e rodar scripts</td>
+            </tr>
+            <tr>
+              <td><strong>Integração</strong></td>
+              <td>Integrações Google (Drive, YouTube, Maps, Gmail)</td>
+              <td>Integração com ambiente local, terminal e repositórios</td>
+            </tr>
+            <tr>
+              <td><strong>Código</strong></td>
+              <td>Gera e explica código; requer copiar/colar</td>
+              <td>Edição direta no projeto, refatoração e debugging contextual</td>
+            </tr>
+            <tr>
+              <td><strong>Privacidade</strong></td>
+              <td>Dados processados na nuvem do Google</td>
+              <td>Trabalho local com maior controle sobre os dados</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="nota">
+          O Gemini é excelente para tarefas rápidas e multimodais na web. O Kimi Work se destaca quando você precisa trabalhar com projetos reais no seu computador.
+        </p>
+      </div>
+
+      <div class="numero-slide">5 / 9</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina4.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina6.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

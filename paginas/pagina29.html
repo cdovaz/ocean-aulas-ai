@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quando usar Fine-tuning? | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .tabela-container {
+      width: 100%;
+      max-width: 900px;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1rem;
+      backdrop-filter: blur(8px);
+      margin-bottom: 0.75rem;
+    }
+
+    .tabela-ft {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.75rem;
+    }
+
+    .tabela-ft th {
+      text-align: left;
+      padding: 0.6rem 0.7rem;
+      font-weight: 700;
+      color: var(--texto-principal);
+      border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+    }
+
+    .tabela-ft td {
+      padding: 0.55rem 0.7rem;
+      color: var(--texto-secundario);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .tabela-ft tr:hover td {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .solucao-ft {
+      font-weight: 700;
+    }
+
+    .solucao-ft.ft { color: var(--verde-ocean); }
+    .solucao-ft.rag { color: var(--azul-claro); }
+    .solucao-ft.few { color: var(--roxo-ia); }
+
+    .regra-ouro {
+      width: 100%;
+      max-width: 900px;
+      padding: 0.8rem;
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .regra-ouro p {
+      font-size: 0.85rem;
+      color: var(--texto-principal);
+      line-height: 1.5;
+    }
+
+    .regra-ouro strong {
+      color: var(--verde-ocean);
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 0.75rem;">
+        <h2>Quando usar Fine-tuning?</h2>
+        <p>Escolha a técnica certa para cada problema</p>
+      </div>
+
+      <div class="tabela-container">
+        <table class="tabela-ft">
+          <thead>
+            <tr>
+              <th>Situação</th>
+              <th>Solução recomendada</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Modelo erra formato ou estilo específico</td>
+              <td><span class="solucao-ft ft">Fine-tuning</span></td>
+            </tr>
+            <tr>
+              <td>Precisa de conhecimento factual atualizado</td>
+              <td><span class="solucao-ft rag">RAG + prompt engineering</span></td>
+            </tr>
+            <tr>
+              <td>Tarefa muito específica e repetitiva</td>
+              <td><span class="solucao-ft ft">Fine-tuning</span></td>
+            </tr>
+            <tr>
+              <td>Poucos exemplos disponíveis</td>
+              <td><span class="solucao-ft few">Few-shot prompting</span></td>
+            </tr>
+            <tr>
+              <td>Precisa corrigir alucinações em fatos</td>
+              <td><span class="solucao-ft rag">RAG</span></td>
+            </tr>
+            <tr>
+              <td>Quer reduzir tamanho do prompt</td>
+              <td><span class="solucao-ft ft">Fine-tuning</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="regra-ouro">
+        <p>📌 <strong>Regra de ouro:</strong> fine-tuning ensina <strong>como responder</strong>, não <strong>o que responder</strong>. Para conhecimento novo, use <strong>RAG</strong>.</p>
+      </div>
+
+      <div class="numero-slide">29 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina28.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina30.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

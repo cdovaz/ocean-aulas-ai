@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custo dos Modelos | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .tabela-container {
+      width: 100%;
+      max-width: 900px;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 1.5rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .tabela-precos {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .tabela-precos thead th {
+      text-align: left;
+      padding: 0.85rem 1rem;
+      font-weight: 700;
+      color: var(--texto-principal);
+      border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.75rem;
+    }
+
+    .tabela-precos tbody td {
+      padding: 0.85rem 1rem;
+      color: var(--texto-secundario);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .tabela-precos tbody tr:hover td {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--texto-principal);
+    }
+
+    .tabela-precos tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .modelo-nome {
+      font-weight: 700;
+      color: var(--texto-principal);
+    }
+
+    .preco {
+      font-family: 'Inter', monospace;
+      font-weight: 600;
+    }
+
+    .preco.input { color: var(--azul-claro); }
+    .preco.output { color: var(--verde-ocean); }
+
+    .nota {
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: var(--texto-secundario);
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 640px) {
+      .tabela-precos {
+        font-size: 0.8rem;
+      }
+      .tabela-precos thead th,
+      .tabela-precos tbody td {
+        padding: 0.65rem 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 1.5rem;">
+        <h2>Custo dos Modelos</h2>
+        <p>Comparação de preços por milhão de tokens</p>
+      </div>
+
+      <div class="tabela-container">
+        <table class="tabela-precos">
+          <thead>
+            <tr>
+              <th>Modelo</th>
+              <th>Custo Input / 1M tokens</th>
+              <th>Custo Output / 1M tokens</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="modelo-nome">GPT-5.5</span></td>
+              <td><span class="preco input">US$ 5,00</span></td>
+              <td><span class="preco output">US$ 30,00</span></td>
+            </tr>
+            <tr>
+              <td><span class="modelo-nome">Claude 4.6 Opus</span></td>
+              <td><span class="preco input">US$ 3,00</span></td>
+              <td><span class="preco output">US$ 25,00</span></td>
+            </tr>
+            <tr>
+              <td><span class="modelo-nome">Gemini 3 Flash</span></td>
+              <td><span class="preco input">US$ 0,50</span></td>
+              <td><span class="preco output">US$ 3,00</span></td>
+            </tr>
+            <tr>
+              <td><span class="modelo-nome">DeepSeek V4 pro</span></td>
+              <td><span class="preco input">US$ 0,435</span></td>
+              <td><span class="preco output">US$ 0,87</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="nota">
+          Valores ilustrativos em dólar (USD), sujeitos a alterações pelos provedores.<br>
+          Preços reais podem variar conforme região, tier e atualizações dos modelos.
+        </p>
+      </div>
+
+      <div class="numero-slide">11 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina10.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina12.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

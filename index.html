@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/estilos.css" />
+  <style>
+    .sumario-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      width: 100%;
+      max-width: 900px;
+      z-index: 1;
+    }
+
+    .sumario-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 1.25rem;
+      backdrop-filter: blur(8px);
+      text-decoration: none;
+      color: var(--texto-principal);
+      transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .sumario-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(52, 184, 245, 0.4);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .sumario-numero {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      background: linear-gradient(135deg, var(--azul-samsung) 0%, var(--roxo-ia) 100%);
+    }
+
+    .sumario-conteudo h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .sumario-conteudo p {
+      font-size: 0.85rem;
+      color: var(--texto-secundario);
+      line-height: 1.3;
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="badge">Samsung Ocean USP</div>
+      <h1 class="titulo">Inteligência Artificial na Prática</h1>
+      <p class="subtitulo">Selecione uma página para começar</p>
+
+      <div class="sumario-grid">
+        <a href="paginas/pagina1.html" class="sumario-item">
+          <div class="sumario-numero">01</div>
+          <div class="sumario-conteudo">
+            <h3>Capa</h3>
+            <p>Informações gerais da aula</p>
+          </div>
+        </a>
+        <a href="paginas/pagina2.html" class="sumario-item">
+          <div class="sumario-numero">02</div>
+          <div class="sumario-conteudo">
+            <h3>Agenda</h3>
+            <p>Tópicos que serão abordados</p>
+          </div>
+        </a>
+        <a href="paginas/pagina3.html" class="sumario-item">
+          <div class="sumario-numero">03</div>
+          <div class="sumario-conteudo">
+            <h3>O que é IA?</h3>
+            <p>Conceitos fundamentais</p>
+          </div>
+        </a>
+        <a href="paginas/pagina4.html" class="sumario-item">
+          <div class="sumario-numero">04</div>
+          <div class="sumario-conteudo">
+            <h3>Agente de IA</h3>
+            <p>Arquitetura e componentes</p>
+          </div>
+        </a>
+        <a href="paginas/pagina5.html" class="sumario-item">
+          <div class="sumario-numero">05</div>
+          <div class="sumario-conteudo">
+            <h3>Chatbot Tradicional</h3>
+            <p>Fluxo e funcionamento</p>
+          </div>
+        </a>
+        <a href="paginas/pagina6.html" class="sumario-item">
+          <div class="sumario-numero">06</div>
+          <div class="sumario-conteudo">
+            <h3>Fundamentos de LLM</h3>
+            <p>Conceitos essenciais de linguagem</p>
+          </div>
+        </a>
+        <a href="paginas/pagina7.html" class="sumario-item">
+          <div class="sumario-numero">07</div>
+          <div class="sumario-conteudo">
+            <h3>História das LLMs</h3>
+            <p>Evolução dos modelos de linguagem</p>
+          </div>
+        </a>
+        <a href="paginas/pagina8.html" class="sumario-item">
+          <div class="sumario-numero">08</div>
+          <div class="sumario-conteudo">
+            <h3>O que é uma LLM?</h3>
+            <p>Definição e funcionamento</p>
+          </div>
+        </a>
+        <a href="paginas/pagina9.html" class="sumario-item">
+          <div class="sumario-numero">09</div>
+          <div class="sumario-conteudo">
+            <h3>Limitações das LLMs</h3>
+            <p>Problemas atuais da arquitetura</p>
+          </div>
+        </a>
+        <a href="paginas/pagina10.html" class="sumario-item">
+          <div class="sumario-numero">10</div>
+          <div class="sumario-conteudo">
+            <h3>O que é um Token?</h3>
+            <p>Tokenização por palavra, caractere e subword</p>
+          </div>
+        </a>
+        <a href="paginas/pagina11.html" class="sumario-item">
+          <div class="sumario-numero">11</div>
+          <div class="sumario-conteudo">
+            <h3>Custo dos Modelos</h3>
+            <p>Comparação de preços por token</p>
+          </div>
+        </a>
+        <a href="paginas/pagina12.html" class="sumario-item">
+          <div class="sumario-numero">12</div>
+          <div class="sumario-conteudo">
+            <h3>Hallucination</h3>
+            <p>Quando a LLM inventa informações</p>
+          </div>
+        </a>
+        <a href="paginas/pagina13.html" class="sumario-item">
+          <div class="sumario-numero">13</div>
+          <div class="sumario-conteudo">
+            <h3>Reduzir Hallucination — Parte 1</h3>
+            <p>Estratégias técnicas e prompts</p>
+          </div>
+        </a>
+        <a href="paginas/pagina14.html" class="sumario-item">
+          <div class="sumario-numero">14</div>
+          <div class="sumario-conteudo">
+            <h3>Reduzir Hallucination — Parte 2</h3>
+            <p>Validação e governança</p>
+          </div>
+        </a>
+        <a href="paginas/pagina15.html" class="sumario-item">
+          <div class="sumario-numero">15</div>
+          <div class="sumario-conteudo">
+            <h3>Agente vs Chatbot</h3>
+            <p>Diferenças conceituais</p>
+          </div>
+        </a>
+        <a href="paginas/pagina16.html" class="sumario-item">
+          <div class="sumario-numero">16</div>
+          <div class="sumario-conteudo">
+            <h3>Arquitetura de um Agente</h3>
+            <p>Componentes e fluxo</p>
+          </div>
+        </a>
+        <a href="paginas/pagina17.html" class="sumario-item">
+          <div class="sumario-numero">17</div>
+          <div class="sumario-conteudo">
+            <h3>Tecnologias para Agentes</h3>
+            <p>Zapier, n8n, CrewAI, LangGraph</p>
+          </div>
+        </a>
+        <a href="paginas/pagina18.html" class="sumario-item">
+          <div class="sumario-numero">18</div>
+          <div class="sumario-conteudo">
+            <h3>O que é Prompt Injection?</h3>
+            <p>Definição e exemplo</p>
+          </div>
+        </a>
+        <a href="paginas/pagina19.html" class="sumario-item">
+          <div class="sumario-numero">19</div>
+          <div class="sumario-conteudo">
+            <h3>Tipos de Prompt Injection</h3>
+            <p>Formas de ataque</p>
+          </div>
+        </a>
+        <a href="paginas/pagina20.html" class="sumario-item">
+          <div class="sumario-numero">20</div>
+          <div class="sumario-conteudo">
+            <h3>Riscos em Produção</h3>
+            <p>Impactos de um ataque</p>
+          </div>
+        </a>
+        <a href="paginas/pagina21.html" class="sumario-item">
+          <div class="sumario-numero">21</div>
+          <div class="sumario-conteudo">
+            <h3>Defesa Básica — Parte 1</h3>
+            <p>Estratégias iniciais</p>
+          </div>
+        </a>
+        <a href="paginas/pagina22.html" class="sumario-item">
+          <div class="sumario-numero">22</div>
+          <div class="sumario-conteudo">
+            <h3>Defesa Básica — Parte 2</h3>
+            <p>Mais estratégias iniciais</p>
+          </div>
+        </a>
+        <a href="paginas/pagina23.html" class="sumario-item">
+          <div class="sumario-numero">23</div>
+          <div class="sumario-conteudo">
+            <h3>Defesas Avançadas — Parte 1</h3>
+            <p>Técnicas robustas contra injection</p>
+          </div>
+        </a>
+        <a href="paginas/pagina24.html" class="sumario-item">
+          <div class="sumario-numero">24</div>
+          <div class="sumario-conteudo">
+            <h3>Defesas Avançadas — Parte 2</h3>
+            <p>Camadas extras de proteção</p>
+          </div>
+        </a>
+        <a href="paginas/pagina25.html" class="sumario-item">
+          <div class="sumario-numero">25</div>
+          <div class="sumario-conteudo">
+            <h3>Temperature</h3>
+            <p>Controle de criatividade e aleatoriedade</p>
+          </div>
+        </a>
+        <a href="paginas/pagina26.html" class="sumario-item">
+          <div class="sumario-numero">26</div>
+          <div class="sumario-conteudo">
+            <h3>Top-K</h3>
+            <p>Limitando as escolhas do modelo</p>
+          </div>
+        </a>
+        <a href="paginas/pagina27.html" class="sumario-item">
+          <div class="sumario-numero">27</div>
+          <div class="sumario-conteudo">
+            <h3>Top-P</h3>
+            <p>Amostragem por núcleo de probabilidade</p>
+          </div>
+        </a>
+        <a href="paginas/pagina28.html" class="sumario-item">
+          <div class="sumario-numero">28</div>
+          <div class="sumario-conteudo">
+            <h3>O que é Fine-tuning?</h3>
+            <p>Conceito e objetivos</p>
+          </div>
+        </a>
+        <a href="paginas/pagina29.html" class="sumario-item">
+          <div class="sumario-numero">29</div>
+          <div class="sumario-conteudo">
+            <h3>Quando usar Fine-tuning?</h3>
+            <p>Fine-tuning vs RAG vs few-shot</p>
+          </div>
+        </a>
+        <a href="paginas/pagina30.html" class="sumario-item">
+          <div class="sumario-numero">30</div>
+          <div class="sumario-conteudo">
+            <h3>Tipos de Fine-tuning — 1</h3>
+            <p>Full, PEFT, LoRA, QLoRA</p>
+          </div>
+        </a>
+        <a href="paginas/pagina31.html" class="sumario-item">
+          <div class="sumario-numero">31</div>
+          <div class="sumario-conteudo">
+            <h3>Tipos de Fine-tuning — 2</h3>
+            <p>Domain, RLHF, DPO</p>
+          </div>
+        </a>
+        <a href="paginas/pagina32.html" class="sumario-item">
+          <div class="sumario-numero">32</div>
+          <div class="sumario-conteudo">
+            <h3>Preparação dos Dados</h3>
+            <p>Formatos e boas práticas</p>
+          </div>
+        </a>
+        <a href="paginas/pagina33.html" class="sumario-item">
+          <div class="sumario-numero">33</div>
+          <div class="sumario-conteudo">
+            <h3>Processo Passo a Passo</h3>
+            <p>Do objetivo ao deploy</p>
+          </div>
+        </a>
+        <a href="paginas/pagina34.html" class="sumario-item">
+          <div class="sumario-numero">34</div>
+          <div class="sumario-conteudo">
+            <h3>Ferramentas</h3>
+            <p>Frameworks e APIs</p>
+          </div>
+        </a>
+        <a href="paginas/pagina35.html" class="sumario-item">
+          <div class="sumario-numero">35</div>
+          <div class="sumario-conteudo">
+            <h3>Exemplo Prático</h3>
+            <p>Fine-tuning com LoRA</p>
+          </div>
+        </a>
+        <a href="paginas/pagina36.html" class="sumario-item">
+          <div class="sumario-numero">36</div>
+          <div class="sumario-conteudo">
+            <h3>Custos e Checklist</h3>
+            <p>Problemas e resumo</p>
+          </div>
+        </a>
+        <a href="paginas/pagina37.html" class="sumario-item">
+          <div class="sumario-numero">37</div>
+          <div class="sumario-conteudo">
+            <h3>Introdução ao RAG</h3>
+            <p>Definição e motivações</p>
+          </div>
+        </a>
+        <a href="paginas/pagina38.html" class="sumario-item">
+          <div class="sumario-numero">38</div>
+          <div class="sumario-conteudo">
+            <h3>Arquitetura do RAG</h3>
+            <p>Fluxo de ingestão e consulta</p>
+          </div>
+        </a>
+        <a href="paginas/pagina39.html" class="sumario-item">
+          <div class="sumario-numero">39</div>
+          <div class="sumario-conteudo">
+            <h3>Documentos, Chunking e Embeddings</h3>
+            <p>Preparando a base de conhecimento</p>
+          </div>
+        </a>
+        <a href="paginas/pagina40.html" class="sumario-item">
+          <div class="sumario-numero">40</div>
+          <div class="sumario-conteudo">
+            <h3>Retrieval e Geração</h3>
+            <p>Busca e resposta fundamentada</p>
+          </div>
+        </a>
+        <a href="paginas/pagina41.html" class="sumario-item">
+          <div class="sumario-numero">41</div>
+          <div class="sumario-conteudo">
+            <h3>Implementação — Ingestão</h3>
+            <p>Do PDF ao Qdrant</p>
+          </div>
+        </a>
+        <a href="paginas/pagina42.html" class="sumario-item">
+          <div class="sumario-numero">42</div>
+          <div class="sumario-conteudo">
+            <h3>LangGraph, FastAPI e Qdrant</h3>
+            <p>Orquestração e deploy</p>
+          </div>
+        </a>
+        <a href="paginas/pagina43.html" class="sumario-item">
+          <div class="sumario-numero">43</div>
+          <div class="sumario-conteudo">
+            <h3>Técnicas Avançadas e Avaliação</h3>
+            <p>Otimização e métricas</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="numero-slide">Sumário</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+  </div>
+<script src="assets/js/navegacao.js"></script>
+</body>
+</html>

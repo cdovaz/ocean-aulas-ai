@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exemplo Prático com LoRA | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .code-container {
+      width: 100%;
+      max-width: 900px;
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 0.75rem;
+      overflow-x: auto;
+    }
+
+    .code-block {
+      font-family: 'Fira Code', 'Consolas', monospace;
+      font-size: 0.62rem;
+      line-height: 1.5;
+      color: #E2E8F0;
+      white-space: pre;
+    }
+
+    .code-comment { color: #64748B; }
+    .code-keyword { color: #C084FC; }
+    .code-string { color: #4ADE80; }
+    .code-func { color: #60A5FA; }
+    .code-num { color: #FBBF24; }
+
+    .passos-codigo {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      width: 100%;
+      max-width: 900px;
+      margin-bottom: 0.75rem;
+      z-index: 1;
+    }
+
+    .passo-codigo {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 0.5rem;
+      text-align: center;
+    }
+
+    .passo-codigo .numero {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--azul-samsung) 0%, var(--roxo-ia) 100%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 800;
+      margin-bottom: 0.25rem;
+    }
+
+    .passo-codigo p {
+      font-size: 0.65rem;
+      color: var(--texto-secundario);
+      line-height: 1.3;
+    }
+
+    @media (max-width: 800px) {
+      .passos-codigo {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 0.75rem;">
+        <h2>Exemplo Prático com LoRA</h2>
+        <p>Pipeline simplificado de fine-tuning em Python</p>
+      </div>
+
+      <div class="passos-codigo">
+        <div class="passo-codigo">
+          <div class="numero">1</div>
+          <p>Carregar modelo e tokenizer</p>
+        </div>
+        <div class="passo-codigo">
+          <div class="numero">2</div>
+          <p>Configurar LoRA</p>
+        </div>
+        <div class="passo-codigo">
+          <div class="numero">3</div>
+          <p>Treinar e salvar</p>
+        </div>
+      </div>
+
+      <div class="code-container">
+        <div class="code-block"><span class="code-comment"># 1. Imports e carregamento</span>
+<span class="code-keyword">from</span> transformers <span class="code-keyword">import</span> AutoModelForCausalLM, AutoTokenizer
+<span class="code-keyword">from</span> peft <span class="code-keyword">import</span> LoraConfig, get_peft_model
+<span class="code-keyword">from</span> trl <span class="code-keyword">import</span> SFTTrainer
+
+model = AutoModelForCausalLM.<span class="code-func">from_pretrained</span>(<span class="code-string">"meta-llama/Llama-3-8b"</span>)
+tokenizer = AutoTokenizer.<span class="code-func">from_pretrained</span>(<span class="code-string">"meta-llama/Llama-3-8b"</span>)
+
+<span class="code-comment"># 2. Configurar LoRA</span>
+lora_config = <span class="code-func">LoraConfig</span>(
+    r=<span class="code-num">16</span>,
+    lora_alpha=<span class="code-num">32</span>,
+    target_modules=[<span class="code-string">"q_proj"</span>, <span class="code-string">"v_proj"</span>],
+    lora_dropout=<span class="code-num">0.05</span>,
+    bias=<span class="code-string">"none"</span>,
+    task_type=<span class="code-string">"CAUSAL_LM"</span>
+)
+model = <span class="code-func">get_peft_model</span>(model, lora_config)
+
+<span class="code-comment"># 3. Treinar e salvar</span>
+trainer = <span class="code-func">SFTTrainer</span>(
+    model=model,
+    tokenizer=tokenizer,
+    train_dataset=dataset,
+    args=training_args
+)
+trainer.<span class="code-func">train</span>()
+model.<span class="code-func">save_pretrained</span>(<span class="code-string">"./modelo-finetuned"</span>)</div>
+      </div>
+
+      <div class="numero-slide">35 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina34.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina36.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+    </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

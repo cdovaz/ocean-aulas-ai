@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stack de Produção | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.7rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .stack-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1rem;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .stack-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(52, 184, 245, 0.4);
+    }
+
+    .stack-card.full {
+      grid-column: 1 / -1;
+    }
+
+    .stack-card .icone {
+      font-size: 1.5rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .stack-card h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      color: var(--texto-principal);
+    }
+
+    .stack-card p {
+      font-size: 0.75rem;
+      color: var(--texto-secundario);
+      line-height: 1.4;
+    }
+
+    .stack-card .role {
+      display: inline-block;
+      padding: 0.1rem 0.4rem;
+      border-radius: 9999px;
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+
+    .role.db { background: rgba(0, 196, 140, 0.15); color: #00C48C; }
+    .role.cache { background: rgba(245, 158, 11, 0.15); color: #F59E0B; }
+    .role.llm { background: rgba(52, 184, 245, 0.15); color: #34B8F5; }
+    .role.vector { background: rgba(123, 97, 255, 0.15); color: #7B61FF; }
+    .role.orq { background: rgba(239, 68, 68, 0.15); color: #EF4444; }
+
+    @media (max-width: 900px) {
+      .stack-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .stack-grid { grid-template-columns: 1fr; max-width: 500px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 1rem;">
+        <h2>Stack de Produção</h2>
+        <p>Ferramentas que compõem o agente de relatórios</p>
+      </div>
+
+      <div class="stack-grid">
+        <div class="stack-card">
+          <span class="role db">Banco de dados</span>
+          <div class="icone">🐘</div>
+          <h3>Supabase</h3>
+          <p>Armazena usuários, relatórios gerados, metadados e histórico de execuções. Também pode servir como fonte de dados estruturados.</p>
+        </div>
+
+        <div class="stack-card">
+          <span class="role cache">Cache / Fila</span>
+          <div class="icone">⚡</div>
+          <h3>Redis</h3>
+          <p>Gerencia filas de tarefas assíncronas, cache de resultados intermediários e estado de execução do agente.</p>
+        </div>
+
+        <div class="stack-card">
+          <span class="role llm">LLM</span>
+          <div class="icone">🧠</div>
+          <h3>Gemini API</h3>
+          <p>Responsável pela geração de texto, análise de dados e sumarização. Pode processar texto, tabelas e até imagens quando necessário.</p>
+        </div>
+
+        <div class="stack-card">
+          <span class="role vector">Vector DB</span>
+          <div class="icone">🔍</div>
+          <h3>Qdrant</h3>
+          <p>Armazena embeddings de documentos internos. Permite recuperar contexto relevante para fundamentar os relatórios.</p>
+        </div>
+
+        <div class="stack-card">
+          <span class="role orq">Orquestração</span>
+          <div class="icone">🕸️</div>
+          <h3>LangGraph</h3>
+          <p>Define o grafo de estados do agente: quais nós executam, em qual ordem, e como as decisões são tomadas.</p>
+        </div>
+
+        <div class="stack-card full">
+          <h3>🛠️ Por que essa stack?</h3>
+          <p>Cada componente resolve um problema específico: persistência (Supabase), velocidade e filas (Redis), inteligência (Gemini), memória semântica (Qdrant) e fluxo de trabalho (LangGraph). Juntos, permitem construir um agente escalável, observável e fácil de manter.</p>
+        </div>
+      </div>
+
+      <div class="numero-slide">2 / 5</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina1.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina3.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

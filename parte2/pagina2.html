@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fundamentos de Prompt Engineering | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .pe-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .pe-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1rem;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .pe-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(52, 184, 245, 0.4);
+    }
+
+    .pe-card.full {
+      grid-column: 1 / -1;
+    }
+
+    .pe-card .icone {
+      font-size: 1.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .pe-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--texto-principal);
+    }
+
+    .pe-card p, .pe-card li {
+      font-size: 0.8rem;
+      color: var(--texto-secundario);
+      line-height: 1.45;
+    }
+
+    .pe-card ul {
+      list-style: none;
+      margin-top: 0.4rem;
+    }
+
+    .pe-card li {
+      margin-bottom: 0.3rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .pe-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--verde-ocean);
+      font-weight: 800;
+    }
+
+    .prompt-exemplo {
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+      padding: 0.85rem;
+      font-family: 'Inter', monospace;
+      font-size: 0.78rem;
+      line-height: 1.5;
+      color: var(--texto-principal);
+      margin-top: 0.5rem;
+    }
+
+    .prompt-exemplo .rotulo {
+      color: var(--azul-claro);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    @media (max-width: 900px) {
+      .pe-grid {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 1rem;">
+        <h2>Fundamentos de Prompt Engineering</h2>
+        <p>Os blocos que compõem um prompt eficaz</p>
+      </div>
+
+      <div class="pe-grid">
+        <div class="pe-card">
+          <div class="icone">🎯</div>
+          <h3>Instrução Clara</h3>
+          <p>Diga exatamente o que você quer que o modelo faça. Evite verbos vagos como "fale sobre". Use ações específicas: resuma, compare, classifique, gere, traduza.</p>
+        </div>
+
+        <div class="pe-card">
+          <div class="icone">📋</div>
+          <h3>Contexto</h3>
+          <p>Forneça informações de fundo necessárias: público-alvo, tom, formato, restrições e o objetivo da resposta. Quanto mais contexto relevante, melhor.</p>
+        </div>
+
+        <div class="pe-card">
+          <div class="icone">👤</div>
+          <h3>Persona</h3>
+          <p>Peça ao modelo para assumir um papel específico. Exemplo: "Atue como um mentor técnico sênior explicando para um desenvolvedor júnior."</p>
+        </div>
+
+        <div class="pe-card">
+          <div class="icone">📤</div>
+          <h3>Formato de Saída</h3>
+          <p>Especifique como quer a resposta: JSON, markdown, tabela, lista, e-mail, código. Isso reduz reformatação posterior.</p>
+        </div>
+
+        <div class="pe-card">
+          <div class="icone">📏</div>
+          <h3>Restrições</h3>
+          <p>Defina limites: tamanho máximo, palavras a evitar, nível de detalhe, o que não deve conter. Restrições aumentam a precisão.</p>
+        </div>
+
+        <div class="pe-card">
+          <div class="icone">✅</div>
+          <h3>Exemplos</h3>
+          <p>Mostre o padrão de entrada e saída desejado. Um ou dois exemplos costumam ser suficientes para alinhar o modelo.</p>
+        </div>
+
+        <div class="pe-card full">
+          <div class="icone">💡</div>
+          <h3>Prompt completo exemplo</h3>
+          <div class="prompt-exemplo">
+            <span class="rotulo">Contexto + Persona + Instrução + Formato + Restrição:</span>
+            "Você é um analista de produto sênior. Resuma em 3 parágrafos curtos os principais feedbacks dos usuários abaixo. Use tom objetivo, formato markdown com bullets e não ultrapasse 200 palavras. [cole os feedbacks aqui]"
+          </div>
+        </div>
+      </div>
+
+      <div class="numero-slide">2 / 9</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina1.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina3.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

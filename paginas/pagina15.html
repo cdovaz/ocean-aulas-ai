@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agente vs Chatbot | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .comparacao-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      width: 100%;
+      max-width: 1000px;
+      z-index: 1;
+    }
+
+    .comparacao-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .comparacao-card.agente {
+      border-color: rgba(0, 196, 140, 0.25);
+      background: rgba(0, 196, 140, 0.05);
+    }
+
+    .comparacao-card.chatbot {
+      border-color: rgba(52, 184, 245, 0.25);
+      background: rgba(52, 184, 245, 0.05);
+    }
+
+    .comparacao-card .icone {
+      font-size: 1.6rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .comparacao-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--texto-principal);
+    }
+
+    .comparacao-card p {
+      font-size: 0.8rem;
+      color: var(--texto-secundario);
+      line-height: 1.45;
+      margin-bottom: 0.75rem;
+    }
+
+    .comparacao-lista {
+      list-style: none;
+    }
+
+    .comparacao-lista li {
+      font-size: 0.75rem;
+      color: var(--texto-secundario);
+      margin-bottom: 0.4rem;
+      padding-left: 1.1rem;
+      position: relative;
+      line-height: 1.4;
+    }
+
+    .comparacao-lista li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      font-weight: 800;
+    }
+
+    .agente .comparacao-lista li::before { color: var(--verde-ocean); }
+    .chatbot .comparacao-lista li::before { color: var(--azul-claro); }
+
+    .versus {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--azul-claro) 0%, var(--verde-ocean) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.75rem;
+      color: #fff;
+      z-index: 2;
+      box-shadow: 0 0 20px rgba(52, 184, 245, 0.3);
+    }
+
+    .comparacao-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @media (max-width: 800px) {
+      .comparacao-grid {
+        grid-template-columns: 1fr;
+      }
+      .versus {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 1rem;">
+        <h2>Agente de IA vs Chatbot</h2>
+        <p>Entenda a diferença entre um assistente conversacional e um agente autônomo</p>
+      </div>
+
+      <div class="comparacao-wrapper">
+        <div class="comparacao-grid">
+          <div class="comparacao-card agente">
+            <div class="icone">🤖</div>
+            <h3>Agente de IA</h3>
+            <p>Sistema autônomo que percebe o ambiente, raciocina, toma decisões e executa ações para atingir um objetivo. Pode usar ferramentas, iterar e aprender com feedback.</p>
+            <ul class="comparacao-lista">
+              <li>Tem objetivo e planejamento próprios</li>
+              <li>Usa ferramentas externas (APIs, bancos, web)</li>
+              <li>Executa múltiplos passos em loop</li>
+              <li>Memória de curto e longo prazo</li>
+              <li>Exemplo: agente que pesquisa, compara preços e compra sozinho</li>
+            </ul>
+          </div>
+
+          <div class="comparacao-card chatbot">
+            <div class="icone">💬</div>
+            <h3>Chatbot Tradicional</h3>
+            <p>Sistema de diálogo que responde perguntas ou executa fluxos predefinidos. Baseia-se em intenções, regras e respostas pré-programadas.</p>
+            <ul class="comparacao-lista">
+              <li>Reage a comandos e intenções do usuário</li>
+              <li>Respostas pré-definidas ou retrieval</li>
+              <li>Fluxo linear ou com poucos desvios</li>
+              <li>Memória limitada ao contexto da conversa</li>
+              <li>Exemplo: chatbot de atendimento que consulta status de pedido</li>
+            </ul>
+          </div>
+        </div>
+        <div class="versus">VS</div>
+      </div>
+
+      <div class="numero-slide">15 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina14.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina16.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

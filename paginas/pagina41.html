@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Implementação — Ingestão | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .ingest-container {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 0.6rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .ingest-col {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.7rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .ingest-col h3 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--texto-principal);
+    }
+
+    .ingest-col p, .ingest-col li {
+      font-size: 0.68rem;
+      color: var(--texto-secundario);
+      line-height: 1.45;
+    }
+
+    .ingest-col ul {
+      list-style: none;
+    }
+
+    .ingest-col li {
+      margin-bottom: 0.2rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .ingest-col li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--verde-ocean);
+      font-weight: 800;
+    }
+
+    .code-container {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 0.6rem;
+      overflow-x: auto;
+    }
+
+    .code-block {
+      font-family: 'Fira Code', 'Consolas', monospace;
+      font-size: 0.58rem;
+      line-height: 1.55;
+      color: #E2E8F0;
+      white-space: pre;
+    }
+
+    .code-comment { color: #64748B; }
+    .code-keyword { color: #C084FC; }
+    .code-string { color: #4ADE80; }
+    .code-func { color: #60A5FA; }
+    .code-num { color: #FBBF24; }
+
+    .passos-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.35rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .passo-mini {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      padding: 0.35rem 0.2rem;
+      text-align: center;
+      font-size: 0.55rem;
+      color: var(--texto-secundario);
+      line-height: 1.3;
+    }
+
+    .passo-mini .n {
+      display: block;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--azul-samsung) 0%, var(--roxo-ia) 100%);
+      color: white;
+      font-size: 0.55rem;
+      font-weight: 800;
+      margin: 0 auto 0.25rem;
+      line-height: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .ingest-container {
+        grid-template-columns: 1fr;
+      }
+      .passos-row {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 0.6rem;">
+        <h2>Implementação — Ingestão</h2>
+        <p>Do PDF ao vector database em 5 passos</p>
+      </div>
+
+      <div class="passos-row">
+        <div class="passo-mini"><span class="n">1</span>Carregar PDF</div>
+        <div class="passo-mini"><span class="n">2</span>Chunking</div>
+        <div class="passo-mini"><span class="n">3</span>Embeddings</div>
+        <div class="passo-mini"><span class="n">4</span>Conectar Qdrant</div>
+        <div class="passo-mini"><span class="n">5</span>Indexar vetores</div>
+      </div>
+
+      <div class="ingest-container">
+        <div class="ingest-col">
+          <h3>⚙️ Setup</h3>
+          <ul>
+            <li>Instale: langchain, langchain-google-genai, langchain-qdrant, qdrant-client, pypdf, python-dotenv</li>
+            <li>Crie arquivo <code>.env</code> com GOOGLE_API_KEY, QDRANT_URL e QDRANT_COLLECTION_NAME</li>
+            <li>Suba o Qdrant via Docker Compose</li>
+          </ul>
+          <h3 style="margin-top: 0.6rem;">📐 Configuração</h3>
+          <p>Modelo de embeddings gera vetores de 768 dimensões. Ajuste o <code>VectorParams</code> conforme o modelo.</p>
+        </div>
+
+        <div class="ingest-col">
+          <div class="code-container">
+            <div class="code-block"><span class="code-comment"># 1. Carregar e dividir documento</span>
+loader = <span class="code-func">PyPDFLoader</span>(<span class="code-string">"documento.pdf"</span>)
+docs = loader.<span class="code-func">load</span>()
+
+splitter = <span class="code-func">RecursiveCharacterTextSplitter</span>(
+    chunk_size=<span class="code-num">1000</span>, chunk_overlap=<span class="code-num">200</span>
+)
+chunks = splitter.<span class="code-func">split_documents</span>(docs)
+
+<span class="code-comment"># 2. Embeddings Gemini</span>
+embeddings = <span class="code-func">GoogleGenerativeAIEmbeddings</span>(
+    model=<span class="code-string">"models/text-embedding-004"</span>
+)
+
+<span class="code-comment"># 3. Criar coleção e indexar</span>
+client.<span class="code-func">create_collection</span>(
+    collection_name=<span class="code-string">"rag_documents"</span>,
+    vectors_config=<span class="code-func">VectorParams</span>(size=<span class="code-num">768</span>, distance=Distance.COSINE)
+)
+vector_store.<span class="code-func">add_documents</span>(chunks)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="numero-slide">41 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina40.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina42.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

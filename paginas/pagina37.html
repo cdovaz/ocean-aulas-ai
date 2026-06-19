@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introdução ao RAG | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .rag-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .rag-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.75rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .rag-card.full {
+      grid-column: 1 / -1;
+    }
+
+    .rag-card h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--texto-principal);
+    }
+
+    .rag-card p, .rag-card li {
+      font-size: 0.72rem;
+      color: var(--texto-secundario);
+      line-height: 1.45;
+    }
+
+    .rag-card table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.65rem;
+    }
+
+    .rag-card th, .rag-card td {
+      padding: 0.35rem 0.4rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      color: var(--texto-secundario);
+    }
+
+    .rag-card th {
+      color: var(--texto-principal);
+      font-weight: 700;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .destaque-rag {
+      background: linear-gradient(135deg, rgba(0, 196, 140, 0.1) 0%, rgba(20, 40, 160, 0.1) 100%);
+      border-color: rgba(0, 196, 140, 0.2);
+    }
+
+    .stack-row {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.4rem;
+    }
+
+    .stack-item {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 0.4rem 0.6rem;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--texto-principal);
+    }
+
+    @media (max-width: 800px) {
+      .rag-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 0.75rem;">
+        <h2>Introdução ao RAG</h2>
+        <p>Retrieval-Augmented Generation: busca + geração de texto</p>
+      </div>
+
+      <div class="rag-grid">
+        <div class="rag-card destaque-rag">
+          <h3>🔍 O que é RAG?</h3>
+          <p>Arquitetura que combina <strong>recuperação de informação</strong> com <strong>geração por LLM</strong>. Em vez de confiar apenas no conhecimento pré-treinado, o modelo busca documentos relevantes em uma base externa e os usa como contexto.</p>
+        </div>
+
+        <div class="rag-card destaque-rag">
+          <h3>💡 Ideia Central</h3>
+          <p>"Dê ao LLM os documentos certos no momento certo, e ele responderá melhor."</p>
+        </div>
+
+        <div class="rag-card">
+          <h3>🎯 Por que usar RAG?</h3>
+          <table>
+            <thead>
+              <tr><th>Problema</th><th>Como o RAG resolve</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Conhecimento desatualizado</td><td>Usa documentos atualizados</td></tr>
+              <tr><td>Alucinações em fatos</td><td>Respostas baseadas em fontes</td></tr>
+              <tr><td>Dados privados/internos</td><td>Não expõe dados no treinamento</td></tr>
+              <tr><td>Custos de fine-tuning</td><td>Reutiliza modelo genérico</td></tr>
+              <tr><td>Explicabilidade</td><td>É possível citar a fonte</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="rag-card full">
+          <h3>🛠️ Stack de Produção Recomendada</h3>
+          <div class="stack-row">
+            <div class="stack-item">Google Gemini</div>
+            <div class="stack-item">embeddings + LLM</div>
+            <div class="stack-item">LangGraph</div>
+            <div class="stack-item">orquestração</div>
+            <div class="stack-item">Qdrant</div>
+            <div class="stack-item">vector database</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="numero-slide">37 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina36.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina38.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arquitetura do Agente de Relatórios | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .arq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .arq-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .arq-card.full {
+      grid-column: 1 / -1;
+    }
+
+    .arq-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--texto-principal);
+    }
+
+    .arq-card p, .arq-card li {
+      font-size: 0.8rem;
+      color: var(--texto-secundario);
+      line-height: 1.45;
+    }
+
+    .arq-card ul {
+      list-style: none;
+      margin-top: 0.4rem;
+    }
+
+    .arq-card li {
+      margin-bottom: 0.3rem;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .arq-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--verde-ocean);
+      font-weight: 800;
+    }
+
+    .fluxo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-top: 0.6rem;
+    }
+
+    .fluxo-step {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--texto-principal);
+      text-align: center;
+    }
+
+    .fluxo-arrow {
+      color: var(--azul-claro);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 800px) {
+      .arq-grid { grid-template-columns: 1fr; max-width: 600px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 1rem;">
+        <h2>Arquitetura do Agente de Relatórios</h2>
+        <p>Um agente que coleta, processa e entrega relatórios automaticamente</p>
+      </div>
+
+      <div class="arq-grid">
+        <div class="arq-card">
+          <h3>🎯 Problema</h3>
+          <p>Equipes gastam horas toda semana coletando dados de várias fontes, organizando em planilhas e escrevendo relatórios. O agente automatiza esse fluxo.</p>
+        </div>
+
+        <div class="arq-card">
+          <h3>✅ Solução</h3>
+          <p>Um agente de IA que recebe um tema e período, busca dados relevantes, consulta documentos internos, gera uma análise estruturada e entrega o relatório final.</p>
+        </div>
+
+        <div class="arq-card full">
+          <h3>🔄 Fluxo do agente</h3>
+          <div class="fluxo">
+            <div class="fluxo-step">Recebe pedido</div>
+            <span class="fluxo-arrow">→</span>
+            <div class="fluxo-step">Busca dados</div>
+            <span class="fluxo-arrow">→</span>
+            <div class="fluxo-step">Recupera contexto</div>
+            <span class="fluxo-arrow">→</span>
+            <div class="fluxo-step">Gera análise</div>
+            <span class="fluxo-arrow">→</span>
+            <div class="fluxo-step">Revisa e entrega</div>
+          </div>
+        </div>
+
+        <div class="arq-card">
+          <h3>📋 Entradas</h3>
+          <ul>
+            <li>Tema do relatório</li>
+            <li>Período de análise</li>
+            <li>Fontes de dados autorizadas</li>
+            <li>Template ou formato desejado</li>
+          </ul>
+        </div>
+
+        <div class="arq-card">
+          <h3>📤 Saídas</h3>
+          <ul>
+            <li>Relatório em markdown/PDF</li>
+            <li>Gráficos e tabelas resumidas</li>
+            <li>Insights e recomendações</li>
+            <li>Histórico armazenado no banco</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="numero-slide">1 / 5</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="../parte2/pagina9.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina2.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

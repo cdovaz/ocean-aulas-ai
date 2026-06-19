@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Técnicas Avançadas e GEMs | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .tec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.7rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .tec-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .tec-card.destaque {
+      border-color: rgba(0, 196, 140, 0.3);
+      background: rgba(0, 196, 140, 0.06);
+    }
+
+    .tec-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--texto-principal);
+    }
+
+    .tec-card p, .tec-card li {
+      font-size: 0.8rem;
+      color: var(--texto-secundario);
+      line-height: 1.45;
+    }
+
+    .tec-card ul {
+      list-style: none;
+      margin-top: 0.4rem;
+    }
+
+    .tec-card li {
+      margin-bottom: 0.3rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .tec-card li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--azul-claro);
+      font-weight: 800;
+    }
+
+    .exemplo-caixa {
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+      padding: 0.75rem;
+      font-family: 'Inter', monospace;
+      font-size: 0.75rem;
+      line-height: 1.5;
+      color: var(--texto-principal);
+      margin-top: 0.5rem;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .tag.gem { background: rgba(0, 196, 140, 0.15); color: #00C48C; }
+    .tag.tec { background: rgba(52, 184, 245, 0.15); color: #34B8F5; }
+
+    @media (max-width: 800px) {
+      .tec-grid {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 1rem;">
+        <h2>Técnicas Avançadas e GEMs</h2>
+        <p>Eleve a qualidade das respostas com técnicas do roadmap.sh e instruções reutilizáveis</p>
+      </div>
+
+      <div class="tec-grid">
+        <div class="tec-card">
+          <span class="tag tec">Técnica</span>
+          <h3>🧠 Zero-shot & Few-shot</h3>
+          <p><strong>Zero-shot:</strong> apenas a instrução, sem exemplos. Funciona bem para tarefas simples.</p>
+          <p style="margin-top: 0.4rem;"><strong>Few-shot:</strong> inclua 2-3 exemplos de entrada/saída. Ajuda o modelo a entender o padrão esperado.</p>
+        </div>
+
+        <div class="tec-card">
+          <span class="tag tec">Técnica</span>
+          <h3>🔗 Chain-of-Thought (CoT)</h3>
+          <p>Peça ao modelo para pensar passo a passo antes de responder. Funciona muito bem para raciocínio lógico, matemática e análise complexa.</p>
+          <div class="exemplo-caixa">"Pense passo a passo antes de responder."<br>"Explique seu raciocínio antes de dar a conclusão."</div>
+        </div>
+
+        <div class="tec-card">
+          <span class="tag tec">Técnica</span>
+          <h3>🔄 ReAct (Reason + Act)</h3>
+          <p>Combina raciocínio com ação. O modelo pensa, decide usar uma ferramenta, observa o resultado e continua até resolver. Base de muitos agentes.</p>
+          <ul>
+            <li>Pensamento → Ação → Observação</li>
+            <li>Repete até atingir o objetivo</li>
+          </ul>
+        </div>
+
+        <div class="tec-card destaque">
+          <span class="tag gem">Gemini</span>
+          <h3>💎 GEMs Personalizados</h3>
+          <p>No Gemini, você pode criar <strong>GEMs</strong>: prompts de sistema salvos com instruções, exemplos e arquivos de conhecimento.</p>
+          <ul>
+            <li>Reutilize prompts ajustados</li>
+            <li>Adicione documentos de referência</li>
+            <li>Defina tom, formato e regras fixas</li>
+            <li>Compartilhe com sua equipe</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="numero-slide">3 / 9</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina2.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina4.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

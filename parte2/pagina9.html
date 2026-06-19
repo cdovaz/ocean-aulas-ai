@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quando Usar Cada Ferramenta | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .decisao-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.7rem;
+      width: 100%;
+      max-width: 1000px;
+      z-index: 1;
+    }
+
+    .decisao-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .decisao-card.full {
+      grid-column: 1 / -1;
+    }
+
+    .decisao-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--texto-principal);
+    }
+
+    .decisao-card p, .decisao-card li {
+      font-size: 0.8rem;
+      color: var(--texto-secundario);
+      line-height: 1.45;
+    }
+
+    .decisao-card ul {
+      list-style: none;
+      margin-top: 0.4rem;
+    }
+
+    .decisao-card li {
+      margin-bottom: 0.3rem;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .decisao-card li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--verde-ocean);
+      font-weight: 800;
+    }
+
+    .mapa-decisao {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.6rem;
+    }
+
+    .mapa-item {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 0.6rem 0.9rem;
+      font-size: 0.75rem;
+      text-align: center;
+      max-width: 180px;
+    }
+
+    .mapa-item strong {
+      display: block;
+      color: var(--texto-principal);
+      margin-bottom: 0.2rem;
+    }
+
+    @media (max-width: 800px) {
+      .decisao-grid { grid-template-columns: 1fr; max-width: 600px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 1rem;">
+        <h2>Quando Usar Cada Ferramenta</h2>
+        <p>Mapa de decisão prático para escolher a ferramenta certa</p>
+      </div>
+
+      <div class="decisao-grid">
+        <div class="decisao-card">
+          <h3>🌐 Use navegador (Gemini/ChatGPT/Claude) quando...</h3>
+          <ul>
+            <li>Precisa de respostas rápidas sem configurar nada</li>
+            <li>Tarefas multimodais: imagens, áudio, vídeo</li>
+            <li>Brainstorming, redação e pesquisa geral</li>
+            <li>Não quer instalar nada no computador</li>
+          </ul>
+        </div>
+
+        <div class="decisao-card">
+          <h3>💻 Use ambiente local (Kimi Work/Claude Code/Cursor) quando...</h3>
+          <ul>
+            <li>Trabalha com projetos reais e muitos arquivos</li>
+            <li>Precisa executar código, testes e comandos</li>
+            <li>Quer memória persistente do contexto do projeto</li>
+            <li>Prioriza privacidade e controle dos dados</li>
+          </ul>
+        </div>
+
+        <div class="decisao-card full">
+          <h3>🗺️ Mapa de decisão resumido</h3>
+          <div class="mapa-decisao">
+            <div class="mapa-item">
+              <strong>Tarefa rápida?</strong>
+              Gemini / ChatGPT web
+            </div>
+            <div class="mapa-item">
+              <strong>Código/projeto?</strong>
+              Kimi Work / Cursor / Claude Code
+            </div>
+            <div class="mapa-item">
+              <strong>Equipe/IDE?</strong>
+              GitHub Copilot / Windsurf
+            </div>
+            <div class="mapa-item">
+              <strong>Workflow complexo?</strong>
+              Swarm de agentes + orquestração
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="numero-slide">9 / 9</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina8.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="../parte3/pagina1.html" class="nav-btn next" aria-label="Próxima parte">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

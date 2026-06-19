@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top-P | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .param-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.55rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .param-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.7rem;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .param-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0, 196, 140, 0.4);
+    }
+
+    .param-card.wide {
+      grid-column: span 2;
+    }
+
+    .param-card.full {
+      grid-column: 1 / -1;
+    }
+
+    .param-card .icone {
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .param-card h3 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: var(--texto-principal);
+      line-height: 1.2;
+    }
+
+    .param-card p, .param-card li {
+      font-size: 0.7rem;
+      color: var(--texto-secundario);
+      line-height: 1.4;
+    }
+
+    .param-card ul {
+      list-style: none;
+      text-align: left;
+      margin-top: 0.3rem;
+    }
+
+    .param-card li {
+      margin-bottom: 0.2rem;
+      padding-left: 0.9rem;
+      position: relative;
+    }
+
+    .param-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--verde-ocean);
+      font-weight: 800;
+    }
+
+    .destaque-topp {
+      background: linear-gradient(135deg, rgba(0, 196, 140, 0.1) 0%, rgba(20, 40, 160, 0.1) 100%);
+      border-color: rgba(0, 196, 140, 0.2);
+    }
+
+    .exemplo-lista {
+      margin-top: 0.3rem;
+    }
+
+    .exemplo-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.3rem 0.5rem;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      font-size: 0.68rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .exemplo-item.included {
+      border-left: 3px solid var(--verde-ocean);
+      background: rgba(0, 196, 140, 0.07);
+    }
+
+    .exemplo-item.excluded {
+      border-left: 3px solid rgba(255, 255, 255, 0.12);
+      opacity: 0.55;
+    }
+
+    .exemplo-corte {
+      margin: 0.15rem 0;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px dashed rgba(245, 158, 11, 0.3);
+      font-size: 0.6rem;
+      color: #f5b00e;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .combo-box {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+
+    .combo-tag {
+      background: rgba(0, 196, 140, 0.1);
+      border: 1px solid rgba(0, 196, 140, 0.2);
+      border-radius: 14px;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.62rem;
+      color: var(--texto-principal);
+      font-weight: 600;
+    }
+
+    .regra-final {
+      margin-top: 0.35rem;
+      padding: 0.35rem 0.6rem;
+      background: rgba(255, 255, 255, 0.04);
+      border-left: 2px solid var(--verde-ocean);
+      border-radius: 0 6px 6px 0;
+      font-size: 0.65rem;
+      color: var(--texto-principal);
+      line-height: 1.4;
+    }
+
+    @media (max-width: 900px) {
+      .param-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .param-card.wide, .param-card.full {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .param-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 0.75rem;">
+        <h2>Top-P <small style="font-size:0.55em; opacity:0.7;">(Nucleus Sampling)</small></h2>
+        <p>Amostre entre os tokens mais prováveis até atingir uma massa de probabilidade acumulada</p>
+      </div>
+
+      <div class="param-grid">
+        <div class="param-card destaque-topp">
+          <div class="icone">🎯</div>
+          <h3>O que é?</h3>
+          <p>O <strong>top-p</strong> define um <strong>núcleo</strong> de tokens: escolhe o menor conjunto cuja soma das probabilidades seja ≥ P. Tokens fora desse núcleo são descartados.</p>
+        </div>
+
+        <div class="param-card">
+          <div class="icone">🔒</div>
+          <h3>P = 0.1</h3>
+          <ul>
+            <li>Núcleo pequeno</li>
+            <li>Respostas focadas</li>
+            <li>Bom para tarefas técnicas</li>
+          </ul>
+        </div>
+
+        <div class="param-card">
+          <div class="icone">🌈</div>
+          <h3>P = 0.95</h3>
+          <ul>
+            <li>Núcleo amplo</li>
+            <li>Maior criatividade</li>
+            <li>Bom para geração livre</li>
+          </ul>
+        </div>
+
+        <div class="param-card wide">
+          <div class="icone">📊</div>
+          <h3>Exemplo: Top-P = 0.9</h3>
+          <div class="exemplo-lista">
+            <div class="exemplo-item included"><span>"aprendizado" — 50%</span><span>✓ incluído</span></div>
+            <div class="exemplo-item included"><span>"treinamento" — 30%</span><span>✓ incluído</span></div>
+            <div class="exemplo-item included"><span>"estudo" — 12%</span><span>✓ incluído</span></div>
+            <div class="exemplo-corte">✂️ Corte: 92% ≥ 90% — "sonho" (5%) e demais ficam fora</div>
+          </div>
+        </div>
+
+        <div class="param-card">
+          <div class="icone">⚙️</div>
+          <h3>Configurações</h3>
+          <ul>
+            <li><strong>P = 0.9:</strong> padrão equilibrado</li>
+            <li><strong>P = 0.95:</strong> mais criativo</li>
+            <li><strong>P = 1.0:</strong> considera todos</li>
+          </ul>
+        </div>
+
+        <div class="param-card full">
+          <div class="icone">🔗</div>
+          <h3>Combinação Recomendada</h3>
+          <div class="combo-box">
+            <span class="combo-tag">temperature = 0.7</span>
+            <span class="combo-tag">top-k = 40</span>
+            <span class="combo-tag">top-p = 0.9</span>
+          </div>
+          <div class="regra-final">
+            📌 <strong>Regra:</strong> top-p é mais adaptativo que top-k. Comece com <strong>top-p = 0.9</strong> e ajuste a temperature conforme o tom desejado.
+          </div>
+        </div>
+      </div>
+
+      <div class="numero-slide">27 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina26.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina28.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

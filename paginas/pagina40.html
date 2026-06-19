@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Retrieval e Geração | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .ret-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .ret-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.75rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .ret-card.full {
+      grid-column: 1 / -1;
+    }
+
+    .ret-card h3 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--texto-principal);
+    }
+
+    .ret-card p, .ret-card li {
+      font-size: 0.7rem;
+      color: var(--texto-secundario);
+      line-height: 1.45;
+    }
+
+    .ret-card ul {
+      list-style: none;
+    }
+
+    .ret-card li {
+      margin-bottom: 0.25rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .ret-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--verde-ocean);
+      font-weight: 800;
+    }
+
+    .ret-card table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.65rem;
+    }
+
+    .ret-card th, .ret-card td {
+      padding: 0.35rem 0.4rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      color: var(--texto-secundario);
+    }
+
+    .ret-card th {
+      color: var(--texto-principal);
+      font-weight: 700;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .embed-viz {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .embed-point {
+      text-align: center;
+    }
+
+    .embed-point .dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.3rem;
+      font-size: 0.65rem;
+      font-weight: 800;
+    }
+
+    .embed-point.gato .dot { background: rgba(52, 184, 245, 0.25); border: 1px solid var(--azul-claro); }
+    .embed-point.felino .dot { background: rgba(0, 196, 140, 0.25); border: 1px solid var(--verde-ocean); }
+    .embed-point.cachorro .dot { background: rgba(123, 97, 255, 0.25); border: 1px solid var(--roxo-ia); }
+
+    .embed-point .label {
+      font-size: 0.68rem;
+      color: var(--texto-principal);
+      font-weight: 600;
+    }
+
+    .embed-point .vec {
+      font-size: 0.55rem;
+      color: var(--texto-secundario);
+      font-family: monospace;
+    }
+
+    .formula {
+      text-align: center;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.7rem;
+      color: var(--azul-claro);
+      margin-top: 0.4rem;
+    }
+
+    @media (max-width: 800px) {
+      .ret-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 0.75rem;">
+        <h2>Retrieval e Geração</h2>
+        <p>Buscando contexto e gerando respostas fundamentadas</p>
+      </div>
+
+      <div class="ret-grid">
+        <div class="ret-card">
+          <h3>🔍 Retrieval</h3>
+          <p>Busca dos chunks mais similares à pergunta do usuário.</p>
+          <table>
+            <thead>
+              <tr><th>Método</th><th>Descrição</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Similaridade por cosseno</td><td>Mais comum; 1 = muito similar</td></tr>
+              <tr><td>Distância euclidiana</td><td>Menor distância = mais próximo</td></tr>
+              <tr><td>Busca híbrida</td><td>Vetorial + palavras-chave (BM25)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ret-card">
+          <h3>✨ Geração</h3>
+          <p>O LLM recebe pergunta + contexto recuperado e gera a resposta.</p>
+          <ul style="margin-top: 0.35rem;">
+            <li><code>gemini-1.5-flash</code> — rápido e barato</li>
+            <li><code>gemini-1.5-pro</code> — mais capacidade</li>
+            <li>Prompt instrui a usar apenas o contexto fornecido</li>
+          </ul>
+        </div>
+
+        <div class="ret-card full">
+          <h3>🧮 Teoria dos Embeddings</h3>
+          <p style="text-align: center; margin-bottom: 0.5rem;">Textos similares ocupam posições próximas no espaço vetorial.</p>
+          <div class="embed-viz">
+            <div class="embed-point gato">
+              <div class="dot">G</div>
+              <div class="label">gato</div>
+              <div class="vec">[0.12, -0.45, 0.89]</div>
+            </div>
+            <div class="embed-point felino">
+              <div class="dot">F</div>
+              <div class="label">felino</div>
+              <div class="vec">[0.15, -0.42, 0.85]</div>
+            </div>
+            <div class="embed-point cachorro">
+              <div class="dot">C</div>
+              <div class="label">cachorro</div>
+              <div class="vec">[-0.80, 0.20, 0.10]</div>
+            </div>
+          </div>
+          <div class="formula">similaridade = (A · B) / (||A|| × ||B||)</div>
+        </div>
+      </div>
+
+      <div class="numero-slide">40 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina39.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina41.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

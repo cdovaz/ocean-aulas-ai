@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alternativas no Mercado | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .alt-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.7rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .alt-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1rem;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .alt-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(52, 184, 245, 0.4);
+    }
+
+    .alt-card .icone {
+      font-size: 1.6rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .alt-card h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      color: var(--texto-principal);
+    }
+
+    .alt-card p {
+      font-size: 0.75rem;
+      color: var(--texto-secundario);
+      line-height: 1.4;
+    }
+
+    .alt-card .tag {
+      display: inline-block;
+      padding: 0.1rem 0.4rem;
+      border-radius: 9999px;
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .tag.web { background: rgba(52, 184, 245, 0.15); color: #34B8F5; }
+    .tag.local { background: rgba(0, 196, 140, 0.15); color: #00C48C; }
+    .tag.code { background: rgba(123, 97, 255, 0.15); color: #7B61FF; }
+
+    @media (max-width: 900px) {
+      .alt-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .alt-grid { grid-template-columns: 1fr; max-width: 500px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 1rem;">
+        <h2>Alternativas no Mercado</h2>
+        <p>Outras ferramentas de IA para produtividade e desenvolvimento</p>
+      </div>
+
+      <div class="alt-grid">
+        <div class="alt-card">
+          <span class="tag code">Coding</span>
+          <div class="icone">🎯</div>
+          <h3>Claude Code</h3>
+          <p>Agente de codificação da Anthropic para terminal. Executa tarefas complexas em projetos, edita arquivos e roda comandos.</p>
+        </div>
+
+        <div class="alt-card">
+          <span class="tag code">Coding</span>
+          <div class="icone">🖱️</div>
+          <h3>Cursor</h3>
+          <p>IDE com IA integrada, popular entre desenvolvedores. Oferece autocomplete, chat com contexto de projeto e edição multi-arquivo.</p>
+        </div>
+
+        <div class="alt-card">
+          <span class="tag code">Coding</span>
+          <div class="icone">🤖</div>
+          <h3>GitHub Copilot</h3>
+          <p>Assistente de código dentro do VS Code e outras IDEs. Gera, completa e explica código com base no contexto do arquivo aberto.</p>
+        </div>
+
+        <div class="alt-card">
+          <span class="tag local">Local</span>
+          <div class="icone">💻</div>
+          <h3>Kimi Work</h3>
+          <p>Ambiente local de produtividade com contexto de projetos, terminal integrado e suporte a tarefas complexas em arquivos reais.</p>
+        </div>
+
+        <div class="alt-card">
+          <span class="tag web">Web</span>
+          <div class="icone">🌐</div>
+          <h3>Gemini / ChatGPT / Claude</h3>
+          <p>Interfaces web para conversas gerais, brainstorming, geração de texto e tarefas multimodais. Ideais para uso rápido e exploratório.</p>
+        </div>
+
+        <div class="alt-card">
+          <span class="tag code">Coding</span>
+          <div class="icone">🌊</div>
+          <h3>Windsurf / Codeium</h3>
+          <p>Alternativas de IDEs e extensões com agentes de código, autocomplete e chat contextual. Focadas em fluxo contínuo de desenvolvimento.</p>
+        </div>
+      </div>
+
+      <div class="numero-slide">8 / 9</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina7.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina9.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

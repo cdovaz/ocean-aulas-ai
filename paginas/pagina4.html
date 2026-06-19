@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agente de IA | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <script src="https://unpkg.com/cytoscape@3.26.0/dist/cytoscape.min.js"></script>
+  <script src="../assets/js/grafos.js" defer></script>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 1.5rem;">
+        <h2>Arquitetura de um Agente de IA</h2>
+        <p>Componentes e fluxos de execução de um agente baseado em LLM</p>
+      </div>
+      <div class="grafo-wrapper">
+        <div id="cy"></div>
+        <div class="grafo-sidebar">
+          <div class="painel-info" id="node-info">
+            <h3 id="info-titulo">Explore o grafo</h3>
+            <span class="tipo-tag" id="info-tipo" style="display: none;"></span>
+            <p id="info-descricao" class="placeholder">Clique em um nó para ver detalhes sobre o componente.</p>
+          </div>
+          <div class="legenda">
+            <h4>Legenda</h4>
+            <div class="legenda-item"><div class="legenda-cor" style="background: #34B8F5;"></div>Entrada / Saída</div>
+            <div class="legenda-item"><div class="legenda-cor" style="background: #7B61FF;"></div>Cérebro / Raciocínio</div>
+            <div class="legenda-item"><div class="legenda-cor" style="background: #00C48C;"></div>Memória</div>
+            <div class="legenda-item"><div class="legenda-cor" style="background: #F59E0B;"></div>Ação / Execução</div>
+            <div class="legenda-item"><div class="legenda-cor" style="background: #EF4444;"></div>Segurança</div>
+            <div class="legenda-item"><div class="legenda-cor" style="background: #64748B;"></div>Monitoramento / Controle</div>
+          </div>
+        </div>
+      </div>
+      <div class="numero-slide">4 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina3.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina5.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

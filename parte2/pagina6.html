@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Swarm Agents | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .swarm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .swarm-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .swarm-card.full {
+      grid-column: 1 / -1;
+    }
+
+    .swarm-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--texto-principal);
+    }
+
+    .swarm-card p, .swarm-card li {
+      font-size: 0.8rem;
+      color: var(--texto-secundario);
+      line-height: 1.45;
+    }
+
+    .swarm-card ul {
+      list-style: none;
+      margin-top: 0.4rem;
+    }
+
+    .swarm-card li {
+      margin-bottom: 0.3rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .swarm-card li::before {
+      content: "🐝";
+      position: absolute;
+      left: 0;
+      font-size: 0.7rem;
+    }
+
+    .swarm-viz {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 0.75rem;
+    }
+
+    .agente {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .agente.orquestrador { background: rgba(52, 184, 245, 0.15); color: #34B8F5; }
+    .agente.pesquisa { background: rgba(0, 196, 140, 0.15); color: #00C48C; }
+    .agente.escrita { background: rgba(123, 97, 255, 0.15); color: #7B61FF; }
+    .agente.revisao { background: rgba(245, 158, 11, 0.15); color: #F59E0B; }
+
+    .agente .icone { font-size: 1.2rem; margin-bottom: 0.2rem; }
+
+    .seta-swarm {
+      color: var(--texto-secundario);
+      font-size: 1.2rem;
+    }
+
+    @media (max-width: 800px) {
+      .swarm-grid { grid-template-columns: 1fr; max-width: 600px; }
+      .agente { width: 70px; height: 70px; font-size: 0.6rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 1rem;">
+        <h2>Swarm Agents</h2>
+        <p>Múltiplos agentes especializados trabalhando em conjunto</p>
+      </div>
+
+      <div class="swarm-grid">
+        <div class="swarm-card">
+          <h3>🐝 O que é um Swarm?</h3>
+          <p>Um <strong>swarm de agentes</strong> é um grupo de agentes especializados que colaboram para resolver uma tarefa complexa. Cada agente tem um papel, ferramentas e objetivo definidos.</p>
+          <ul>
+            <li>Divisão de responsabilidades</li>
+            <li>Comunicação entre agentes</li>
+            <li>Orquestração de tarefas</li>
+          </ul>
+        </div>
+
+        <div class="swarm-card">
+          <h3>⚡ Quando usar</h3>
+          <p>Swarms são úteis quando uma única LLM não consegue cobrir bem todas as habilidades necessárias ou quando o problema se divide naturalmente em etapas especializadas.</p>
+          <ul>
+            <li>Relatórios complexos (pesquisa + escrita + revisão)</li>
+            <li>Automação de workflows multi-etapas</li>
+            <li>Code review, testes e documentação</li>
+          </ul>
+        </div>
+
+        <div class="swarm-card full">
+          <h3>🏗️ Exemplo: swarm para criar um relatório</h3>
+          <div class="swarm-viz">
+            <div class="agente orquestrador">
+              <div class="icone">🎯</div>
+              <div>Orquestrador</div>
+            </div>
+            <span class="seta-swarm">→</span>
+            <div class="agente pesquisa">
+              <div class="icone">🔍</div>
+              <div>Pesquisa</div>
+            </div>
+            <span class="seta-swarm">→</span>
+            <div class="agente escrita">
+              <div class="icone">✍️</div>
+              <div>Escrita</div>
+            </div>
+            <span class="seta-swarm">→</span>
+            <div class="agente revisao">
+              <div class="icone">✔️</div>
+              <div>Revisão</div>
+            </div>
+          </div>
+          <p style="text-align: center; margin-top: 0.75rem;">O orquestrador distribui tarefas, cada agente executa sua especialidade e o resultado final é validado antes da entrega.</p>
+        </div>
+      </div>
+
+      <div class="numero-slide">6 / 9</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina5.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina7.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preparação dos Dados | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .dados-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.7rem;
+      width: 100%;
+      max-width: 1000px;
+      z-index: 1;
+    }
+
+    .dados-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.75rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .dados-card.destaque {
+      grid-column: 1 / -1;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%);
+      border-color: rgba(245, 158, 11, 0.2);
+    }
+
+    .dados-card h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      color: var(--texto-principal);
+    }
+
+    .dados-card p {
+      font-size: 0.72rem;
+      color: var(--texto-secundario);
+      line-height: 1.4;
+      margin-bottom: 0.4rem;
+    }
+
+    .code-block {
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 6px;
+      padding: 0.45rem 0.6rem;
+      font-family: monospace;
+      font-size: 0.6rem;
+      color: var(--texto-secundario);
+      overflow-x: auto;
+      line-height: 1.4;
+    }
+
+    .boas-praticas {
+      list-style: none;
+    }
+
+    .boas-praticas li {
+      font-size: 0.7rem;
+      color: var(--texto-secundario);
+      margin-bottom: 0.3rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .boas-praticas li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--verde-ocean);
+      font-weight: 800;
+    }
+
+    @media (max-width: 800px) {
+      .dados-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 0.75rem;">
+        <h2>Preparação dos Dados</h2>
+        <p>A qualidade do fine-tuning depende 80% dos dados</p>
+      </div>
+
+      <div class="dados-grid">
+        <div class="dados-card destaque">
+          <h3>⚠️ Regra de Ouro</h3>
+          <p>Exemplos ruins ensinam o modelo a errar. Invista mais tempo na curadoria dos dados do que no treinamento em si.</p>
+        </div>
+
+        <div class="dados-card">
+          <h3>📋 Formato Instruction Tuning</h3>
+          <div class="code-block">{
+  "instruction": "Resuma em 3 frases.",
+  "input": "Texto longo...",
+  "output": "Resumo aqui."
+}</div>
+        </div>
+
+        <div class="dados-card">
+          <h3>💬 Formato Chat</h3>
+          <div class="code-block">{
+  "messages": [
+    {"role": "system", "content": "Você é um especialista jurídico."},
+    {"role": "user", "content": "Explique o artigo 5º."},
+    {"role": "assistant", "content": "Trata dos direitos fundamentais..."}
+  ]
+}</div>
+        </div>
+
+        <div class="dados-card" style="grid-column: 1 / -1;">
+          <h3>✅ Boas Práticas</h3>
+          <ul class="boas-praticas">
+            <li><strong>Quantidade:</strong> centenas a milhares de exemplos, conforme complexidade</li>
+            <li><strong>Qualidade > quantidade:</strong> exemplos ruins ensinam o modelo a errar</li>
+            <li><strong>Diversidade:</strong> cubra variações de phrasing, tamanho e edge cases</li>
+            <li><strong>Consistência:</strong> mesmo formato, tom e profundidade</li>
+            <li><strong>Balanceamento:</strong> evite que um tipo de exemplo domine</li>
+            <li><strong>Dados reais:</strong> preferencialmente dados reais, não sintéticos genéricos</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="numero-slide">32 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina31.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina33.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

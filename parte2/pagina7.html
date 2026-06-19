@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tasks Avançadas em Ambientes Locais | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .task-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.7rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .task-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .task-card.full {
+      grid-column: 1 / -1;
+    }
+
+    .task-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--texto-principal);
+    }
+
+    .task-card p, .task-card li {
+      font-size: 0.8rem;
+      color: var(--texto-secundario);
+      line-height: 1.45;
+    }
+
+    .task-card ul {
+      list-style: none;
+      margin-top: 0.4rem;
+    }
+
+    .task-card li {
+      margin-bottom: 0.35rem;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .task-card li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: var(--azul-claro);
+      font-weight: 800;
+    }
+
+    .comando {
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 8px;
+      padding: 0.6rem 0.8rem;
+      font-family: 'Inter', monospace;
+      font-size: 0.75rem;
+      color: var(--texto-principal);
+      margin-top: 0.4rem;
+      border-left: 3px solid var(--verde-ocean);
+    }
+
+    @media (max-width: 800px) {
+      .task-grid { grid-template-columns: 1fr; max-width: 600px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 1rem;">
+        <h2>Tasks Avançadas em Ambientes Locais</h2>
+        <p>Recursos que só fazem sentido em Kimi Work, Claude app e similares</p>
+      </div>
+
+      <div class="task-grid">
+        <div class="task-card">
+          <h3>📁 Contexto de Projeto</h3>
+          <p>Abra uma pasta inteira e peça ao assistente para analisar, refatorar ou documentar vários arquivos de uma vez.</p>
+          <div class="comando">"@src Analise os 3 principais gargalos de performance deste projeto."</div>
+        </div>
+
+        <div class="task-card">
+          <h3>🔧 Execução em Lote</h3>
+          <p>Peça para aplicar uma transformação em vários arquivos ao mesmo tempo: renomear funções, gerar testes ou atualizar logs.</p>
+          <div class="comando">"Gere testes unitários para todos os arquivos da pasta /components."</div>
+        </div>
+
+        <div class="task-card">
+          <h3>🧠 Memória Persistente</h3>
+          <p>O assistente lembra do contexto anterior dentro do projeto, suas preferências de estilo e decisões já tomadas.</p>
+          <div class="comando">"Siga o padrão de código que usamos nos controllers anteriores."</div>
+        </div>
+
+        <div class="task-card">
+          <h3>🖥️ Terminal Integrado</h3>
+          <p>Rode comandos, instale dependências, execute testes e interprete logs sem sair do ambiente de trabalho.</p>
+          <div class="comando">"Execute os testes e me diga quais falharam e por quê."</div>
+        </div>
+
+        <div class="task-card full">
+          <h3>⚠️ Diferença para interfaces web puras</h3>
+          <p>Em ferramentas como Gemini no navegador, você precisa copiar e colar código e contexto manualmente. Em Kimi Work ou Claude app, o assistente vive dentro do seu projeto, com acesso a arquivos, terminal e histórico — permitindo tarefas muito mais amplas e automatizadas.</p>
+        </div>
+      </div>
+
+      <div class="numero-slide">7 / 9</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina6.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina8.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

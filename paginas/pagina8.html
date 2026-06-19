@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O que é uma LLM? | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .llm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.7rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .llm-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 0.75rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .llm-card.destaque {
+      grid-column: 1 / -1;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(20, 40, 160, 0.2) 0%, rgba(123, 97, 255, 0.15) 100%);
+      border-color: rgba(123, 97, 255, 0.25);
+    }
+
+    .llm-card h3 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      color: var(--texto-principal);
+    }
+
+    .llm-card p {
+      font-size: 0.76rem;
+      color: var(--texto-secundario);
+      line-height: 1.4;
+    }
+
+    .llm-card.destaque h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, #FFFFFF 0%, var(--azul-claro) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .llm-card.destaque p {
+      font-size: 0.85rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 800px) {
+      .llm-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 0.75rem;">
+        <h2>O que é uma LLM?</h2>
+        <p>Large Language Model: o motor por trás dos chatbots modernos</p>
+      </div>
+
+      <div class="llm-grid">
+        <div class="llm-card destaque">
+          <h2>Modelo de Linguagem Grande</h2>
+          <p>
+            Uma LLM é um modelo de inteligência artificial treinado com bilhões de palavras para entender, gerar e completar textos em linguagem natural. Ela aprende padrões estatísticos da linguagem e usa esses padrões para produzir respostas coerentes.
+          </p>
+        </div>
+
+        <div class="llm-card">
+          <h3>🔮 Predição de Tokens</h3>
+          <p>No fundo, uma LLM é uma máquina de prever o próximo token. Dado "O céu está...", ela calcula a probabilidade de cada palavra seguinte e escolhe a mais adequada.</p>
+        </div>
+
+        <div class="llm-card">
+          <h3>🧠 Arquitetura Transformer</h3>
+          <p>Baseada no mecanismo de atenção (self-attention), a arquitetura Transformer processa tokens em paralelo e captura relações de longo alcance no texto.</p>
+        </div>
+
+        <div class="llm-card">
+          <h3>⚙️ Duas Fases de Treinamento</h3>
+          <p><strong>Pré-treinamento:</strong> o modelo aprende a linguagem em grandes corpora de texto.<br><strong>Ajuste fino / RLHF:</strong> alinha respostas com preferências humanas.</p>
+        </div>
+
+        <div class="llm-card">
+          <h3>💡 Analogia Simples</h3>
+          <p>Pense na LLM como um autocompletar extremamente sofisticado. Ela não "pensa" como humanos, mas simula raciocínio a partir de padrões aprendidos.</p>
+        </div>
+
+        <div class="llm-card">
+          <h3>📌 Exemplos Conhecidos</h3>
+          <p>GPT-4, Claude, Gemini, Llama, Mistral e Qwen são alguns dos modelos mais utilizados em produtos e pesquisa.</p>
+        </div>
+      </div>
+
+      <div class="numero-slide">8 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina7.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina9.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

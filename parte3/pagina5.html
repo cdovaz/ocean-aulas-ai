@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deploy, Monitoramento e Escalabilidade | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .dep-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.7rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .dep-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .dep-card.full {
+      grid-column: 1 / -1;
+    }
+
+    .dep-card .icone {
+      font-size: 1.5rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .dep-card h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--texto-principal);
+    }
+
+    .dep-card p, .dep-card li {
+      font-size: 0.75rem;
+      color: var(--texto-secundario);
+      line-height: 1.4;
+    }
+
+    .dep-card ul {
+      list-style: none;
+      margin-top: 0.35rem;
+    }
+
+    .dep-card li {
+      margin-bottom: 0.25rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .dep-card li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--verde-ocean);
+      font-weight: 800;
+    }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .check-item {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 0.5rem;
+      font-size: 0.72rem;
+      color: var(--texto-principal);
+    }
+
+    @media (max-width: 900px) {
+      .dep-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .dep-grid { grid-template-columns: 1fr; max-width: 500px; }
+      .checklist { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 1rem;">
+        <h2>Deploy, Monitoramento e Escalabilidade</h2>
+        <p>Colocando o agente de relatórios em produção</p>
+      </div>
+
+      <div class="dep-grid">
+        <div class="dep-card">
+          <div class="icone">🚀</div>
+          <h3>Deploy</h3>
+          <ul>
+            <li>Containerize com Docker</li>
+            <li>API com FastAPI ou similar</li>
+            <li>Deploy em nuvem (GCP, AWS, Azure)</li>
+            <li>Variáveis de ambiente seguras</li>
+          </ul>
+        </div>
+
+        <div class="dep-card">
+          <div class="icone">📊</div>
+          <h3>Monitoramento</h3>
+          <ul>
+            <li>Logs estruturados no Supabase</li>
+            <li>Métricas de latência e custo</li>
+            <li>Rastreamento de erros por nó</li>
+            <li>Avaliação da qualidade dos relatórios</li>
+          </ul>
+        </div>
+
+        <div class="dep-card">
+          <div class="icone">📈</div>
+          <h3>Escalabilidade</h3>
+          <ul>
+            <li>Redis como fila de tarefas</li>
+            <li>Workers assíncronos</li>
+            <li>Cache de embeddings</li>
+            <li>Rate limiting na Gemini API</li>
+          </ul>
+        </div>
+
+        <div class="dep-card full">
+          <h3>🔒 Checklist de segurança</h3>
+          <div class="checklist">
+            <div class="check-item">Validar entradas do usuário</div>
+            <div class="check-item">Isolar acesso aos bancos</div>
+            <div class="check-item">Revisar saídas antes de entregar</div>
+            <div class="check-item">Proteger prompts de sistema</div>
+            <div class="check-item">Auditar custos por execução</div>
+            <div class="check-item">Permitir intervenção humana</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="numero-slide">5 / 5</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina4.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

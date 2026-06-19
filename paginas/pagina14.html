@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reduzir Hallucination — Parte 2 | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .mitigacao-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.55rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .mitigacao-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 0.75rem;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .mitigacao-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0, 196, 140, 0.4);
+    }
+
+    .mitigacao-card .icone {
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .mitigacao-card h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: var(--texto-principal);
+    }
+
+    .mitigacao-card p {
+      font-size: 0.72rem;
+      color: var(--texto-secundario);
+      line-height: 1.4;
+    }
+
+    .mitigacao-card .dica {
+      margin-top: 0.45rem;
+      padding: 0.35rem 0.55rem;
+      background: rgba(0, 196, 140, 0.08);
+      border-left: 3px solid var(--verde-ocean);
+      border-radius: 5px;
+      font-size: 0.65rem;
+      color: var(--texto-secundario);
+      line-height: 1.35;
+    }
+
+    @media (max-width: 850px) {
+      .mitigacao-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 0.75rem;">
+        <h2>Reduzir Hallucination</h2>
+        <p>Processos de validação e governança — Parte 2</p>
+      </div>
+
+      <div class="mitigacao-grid">
+        <div class="mitigacao-card">
+          <div class="icone">👤</div>
+          <h3>Revisão Humana (Human-in-the-Loop)</h3>
+          <p>Em aplicações críticas, sempre inclua um especialista humano para revisar outputs antes de publicá-los ou tomar decisões baseadas neles.</p>
+          <div class="dica">💡 Dica: use LLMs como assistentes, não como autoridade final.</div>
+        </div>
+
+        <div class="mitigacao-card">
+          <div class="icone">✂️</div>
+          <h3>Divida Tarefas Complexas</h3>
+          <p>Quebre problemas grandes em subtarefas menores. Cada etapa mais simples reduz a chance de o modelo inventar informações para preencher lacunas.</p>
+          <div class="dica">💡 Dica: resuma primeiro, depois responda com base no resumo.</div>
+        </div>
+
+        <div class="mitigacao-card">
+          <div class="icone">🔁</div>
+          <h3>Verificação com Múltiplos Modelos</h3>
+          <p>Use dois ou mais modelos para responder à mesma pergunta e compare os resultados. Divergências indicam a necessidade de revisão manual.</p>
+          <div class="dica">💡 Dica: modele uma "votação" entre modelos diferentes.</div>
+        </div>
+
+        <div class="mitigacao-card">
+          <div class="icone">📊</div>
+          <h3>Monitoramento e Feedback Loop</h3>
+          <p>Acompanhe métricas de qualidade, erros reportados e feedback dos usuários. Use esses dados para ajustar prompts, RAG e processos.</p>
+          <div class="dica">💡 Dica: mantenha um log de alucinações detectadas para treinar melhorias.</div>
+        </div>
+
+        <div class="mitigacao-card">
+          <div class="icone">⚠️</div>
+          <h3>Disclaimers e Transparência</h3>
+          <p>Comunique claramente os limites do sistema. Inclua disclaimers quando a informação for gerada por IA e oriente o usuário a verificar dados críticos.</p>
+          <div class="dica">💡 Dica: "Esta resposta foi gerada por IA e pode conter imprecisões."</div>
+        </div>
+      </div>
+
+      <div class="numero-slide">14 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina13.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina15.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

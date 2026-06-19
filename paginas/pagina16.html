@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tipos de Arquiteturas de Agentes | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .arquiteturas-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.55rem;
+      width: 100%;
+      max-width: 1200px;
+      z-index: 1;
+    }
+
+    .arquitetura-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.65rem;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .arquitetura-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(123, 97, 255, 0.4);
+    }
+
+    .arquitetura-card .icone {
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .arquitetura-card h3 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: var(--texto-principal);
+      line-height: 1.2;
+    }
+
+    .arquitetura-card p {
+      font-size: 0.68rem;
+      color: var(--texto-secundario);
+      line-height: 1.35;
+      margin-bottom: 0.35rem;
+    }
+
+    .arquitetura-card .exemplo {
+      padding: 0.3rem 0.45rem;
+      background: rgba(123, 97, 255, 0.08);
+      border-left: 2px solid var(--roxo-ia);
+      border-radius: 4px;
+      font-size: 0.62rem;
+      color: var(--texto-secundario);
+      line-height: 1.3;
+    }
+
+    .arquitetura-card .exemplo strong {
+      color: var(--texto-principal);
+    }
+
+    @media (max-width: 1000px) {
+      .arquiteturas-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .arquiteturas-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 0.75rem;">
+        <h2>Tipos de Arquiteturas de Agentes</h2>
+        <p>Padrões de design para construir sistemas autônomos com LLMs</p>
+      </div>
+
+      <div class="arquiteturas-grid">
+        <div class="arquitetura-card">
+          <div class="icone">📋</div>
+          <h3>Planner / Plan-and-Execute</h3>
+          <p>Planeja todos os passos antes de executar. Ideal para tarefas complexas e de longo prazo.</p>
+          <div class="exemplo">
+            <strong>Ex:</strong> planejar uma viagem completa antes de fazer reservas.
+          </div>
+        </div>
+
+        <div class="arquitetura-card">
+          <div class="icone">🔄</div>
+          <h3>ReAct (Reason + Act)</h3>
+          <p>Intercala raciocínio e ação em loop. O agente pensa, age, observa e repete.</p>
+          <div class="exemplo">
+            <strong>Ex:</strong> buscar clima na API e sugerir guarda-chuva se chover.
+          </div>
+        </div>
+
+        <div class="arquitetura-card">
+          <div class="icone">🪞</div>
+          <h3>Reflexão (Reflection)</h3>
+          <p>Avalia suas próprias respostas, identifica erros e gera versões melhoradas.</p>
+          <div class="exemplo">
+            <strong>Ex:</strong> escrever, revisar e corrigir um texto antes de entregar.
+          </div>
+        </div>
+
+        <div class="arquitetura-card">
+          <div class="icone">🛠️</div>
+          <h3>Tool Use / Function Calling</h3>
+          <p>Foca no uso de ferramentas externas. O LLM escolhe qual função chamar.</p>
+          <div class="exemplo">
+            <strong>Ex:</strong> consultar CEP, calcular ou buscar em vector DB.
+          </div>
+        </div>
+
+        <div class="arquitetura-card">
+          <div class="icone">📚</div>
+          <h3>RAG Agent</h3>
+          <p>Recupera documentos antes de responder, reduzindo alucinações.</p>
+          <div class="exemplo">
+            <strong>Ex:</strong> responder sobre um manual consultando trechos relevantes.
+          </div>
+        </div>
+
+        <div class="arquitetura-card">
+          <div class="icone">👥</div>
+          <h3>Multi-Agent / Crew</h3>
+          <p>Vários agentes especializados colaboram, cada um com um papel.</p>
+          <div class="exemplo">
+            <strong>Ex:</strong> pesquisador, analista e redator criando um relatório.
+          </div>
+        </div>
+
+        <div class="arquitetura-card">
+          <div class="icone">🏗️</div>
+          <h3>Hierárquica</h3>
+          <p>Um supervisor coordena workers e integra os resultados.</p>
+          <div class="exemplo">
+            <strong>Ex:</strong> orquestrador delega para agentes de vendas e suporte.
+          </div>
+        </div>
+
+        <div class="arquitetura-card">
+          <div class="icone">🕸️</div>
+          <h3>Graph-based</h3>
+          <p>Modela o agente como grafo de estados com ciclos e ramificações.</p>
+          <div class="exemplo">
+            <strong>Ex:</strong> fluxo de suporte que escala, consulta FAQ ou abre chamado.
+          </div>
+        </div>
+      </div>
+
+      <div class="numero-slide">16 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina15.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina17.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+  </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>

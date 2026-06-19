@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Processo de Fine-tuning | Aula de IA - Samsung Ocean USP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+  <style>
+    .passos-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;
+    }
+
+    .passo-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.65rem;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .passo-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(52, 184, 245, 0.4);
+    }
+
+    .passo-numero {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--azul-samsung) 0%, var(--roxo-ia) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 800;
+      margin-bottom: 0.35rem;
+    }
+
+    .passo-card h3 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+      color: var(--texto-principal);
+      line-height: 1.2;
+    }
+
+    .passo-card p {
+      font-size: 0.65rem;
+      color: var(--texto-secundario);
+      line-height: 1.35;
+    }
+
+    .hiperparams {
+      grid-column: 1 / -1;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.7rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .hiperparams h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--texto-principal);
+    }
+
+    .hiper-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.65rem;
+    }
+
+    .hiper-table th, .hiper-table td {
+      padding: 0.35rem 0.5rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      color: var(--texto-secundario);
+    }
+
+    .hiper-table th {
+      color: var(--texto-principal);
+      font-weight: 700;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+    }
+
+    @media (max-width: 950px) {
+      .passos-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .passos-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <section class="slide active">
+      <div class="grid-overlay"></div>
+      <div class="top-bar"></div>
+      <div class="slide-header" style="margin-bottom: 0.75rem;">
+        <h2>Processo Passo a Passo</h2>
+        <p>Do objetivo ao deploy de um modelo fine-tuned</p>
+      </div>
+
+      <div class="passos-grid">
+        <div class="passo-card">
+          <div class="passo-numero">1</div>
+          <h3>Defina o objetivo</h3>
+          <p>O que o modelo deve fazer melhor? Qual métrica mede sucesso?</p>
+        </div>
+
+        <div class="passo-card">
+          <div class="passo-numero">2</div>
+          <h3>Colete e limpe dados</h3>
+          <p>Remova duplicatas, erros e ruídos. Divida em treino/validação/teste (80/10/10).</p>
+        </div>
+
+        <div class="passo-card">
+          <div class="passo-numero">3</div>
+          <h3>Escolha o modelo base</h3>
+          <p>Pequeno (7B), médio (13B-30B) ou grande (70B+), conforme necessidade e infra.</p>
+        </div>
+
+        <div class="passo-card">
+          <div class="passo-numero">4</div>
+          <h3>Escolha a técnica</h3>
+          <p>LoRA/QLoRA para maioria dos casos. Full fine-tuning só com infraestrutura.</p>
+        </div>
+
+        <div class="passo-card">
+          <div class="passo-numero">5</div>
+          <h3>Configure hiperparâmetros</h3>
+          <p>Learning rate, epochs, batch size, LoRA rank/alpha e max length.</p>
+        </div>
+
+        <div class="passo-card">
+          <div class="passo-numero">6</div>
+          <h3>Treine o modelo</h3>
+          <p>Use transformers, trl, peft, bitsandbytes. Monitore loss e overfitting.</p>
+        </div>
+
+        <div class="passo-card">
+          <div class="passo-numero">7</div>
+          <h3>Avalie</h3>
+          <p>Métricas automáticas (BLEU, ROUGE) e avaliação humana de qualidade.</p>
+        </div>
+
+        <div class="passo-card">
+          <div class="passo-numero">8</div>
+          <h3>Merge e deploy</h3>
+          <p>Merge dos adaptadores, quantização se necessário, deploy via API.</p>
+        </div>
+
+        <div class="hiperparams">
+          <h3>⚙️ Hiperparâmetros típicos</h3>
+          <table class="hiper-table">
+            <thead>
+              <tr><th>Hiperparâmetro</th><th>O que faz</th><th>Valor típico</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Learning rate</td><td>Velocidade de aprendizado</td><td>1e-4 a 5e-5</td></tr>
+              <tr><td>Epochs</td><td>Quantas vezes vê os dados</td><td>1 a 5</td></tr>
+              <tr><td>Batch size</td><td>Amostras por atualização</td><td>4, 8, 16</td></tr>
+              <tr><td>LoRA rank</td><td>Capacidade de adaptação</td><td>8, 16, 32, 64</td></tr>
+              <tr><td>LoRA alpha</td><td>Escala das adaptações</td><td>2x o rank</td></tr>
+              <tr><td>Max length</td><td>Tamanho máximo da sequência</td><td>512, 1024, 2048</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="numero-slide">33 / 43</div>
+    </section>
+
+    <div class="footer">
+      <div class="logo-area">
+        <span></span>
+        Samsung Ocean USP
+      </div>
+      <div>Inteligência Artificial na Prática | 2026</div>
+    </div>
+
+    <a href="pagina32.html" class="nav-btn prev" aria-label="Página anterior">❮</a>
+    <a href="pagina34.html" class="nav-btn next" aria-label="Próxima página">❯</a>
+    </div>
+<script src="../assets/js/navegacao.js"></script>
+</body>
+</html>
